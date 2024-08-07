@@ -1,0 +1,92 @@
+.room-details-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .main-card {
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .image-gallery {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .thumbnail-images {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .thumbnail-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .room-info {
+    margin-top: 20px;
+  }
+  
+  .host-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .price-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  mat-form-field, mat-select {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+
+.wrapper {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    object-fit: cover; 
+    margin-top: 200px; /* Ajusta este valor según la altura de tu navbar */
+    padding: 20px;
+  }
+  
+  .container {
+    width: 80%; 
+    max-width: 1000px; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    border: 2px solid #ddd; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    object-fit: cover; 
+  }
+  
+  
+  .image-container {
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+  }
+  
+  .image {
+    width: 800px; 
+    height: 500px; 
+    object-fit: cover; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .material-icons.orange600 { color: #FB8C00; }

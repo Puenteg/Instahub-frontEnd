@@ -1,1 +1,59 @@
-<p>room-details works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<app-navbar></app-navbar>
+  
+<div class="wrapper">
+  <div class="container">
+    <div *ngIf="bedroom">
+      <h2>{{ bedroom.title }}</h2>
+      
+      <div class="image-container">
+          <img [src]="bedroom.image" alt="{{ bedroom.title }}" class="image">
+      </div>
+      <br>
+      <h2>{{ bedroom.title }}</h2>
+      <br>
+
+      <p><strong>Descripción:</strong> {{ bedroom.description }}</p>
+      <mat-list>
+        <div mat-subheader></div>
+          <mat-list-item>
+            <p><strong><span class="material-icons orange600">face</span> Anfitrión:</strong> {{ bedroom.host }}</p>
+          </mat-list-item>
+        <div ></div>
+          <mat-list-item>
+            <p><strong><i class="fas fa-th-list"></i> Categoría:</strong> {{ bedroom.category }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <p><strong><i class="fas fa-map-marker-alt"></i> Ubicación:</strong> {{ bedroom.location }}</p>
+          </mat-list-item>
+          <mat-list-item>
+            <p><strong><i class="fas fa-weight"></i> Precio:</strong> {{ bedroom.price }} MXN por noche</p>
+          </mat-list-item>
+          <mat-list-item>
+            <p><strong><i class="fas fa-calendar-alt"></i> Fecha:</strong> {{ bedroom.date }}</p>
+          </mat-list-item>
+      </mat-list>
+      <mat-divider></mat-divider>
+
+      <br>
+      <p><strong>Servicios:</strong></p>
+      <ul>
+        <li *ngFor="let service of bedroom.services">{{ service }}</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+  
+</body>
+</html>
+<!-- <app-comentarios></app-comentarios> -->
+
+  

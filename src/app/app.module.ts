@@ -10,7 +10,7 @@ import { SidebarComponent } from './features/host/components/sidebar/sidebar.com
 import { ReservationFormComponent } from './features/user/components/reservation-form/reservation-form.component';
 import { RoomDetailsComponent } from './features/user/components/room-details/room-details.component';
 import { RoomListComponent } from './features/user/components/room-list/room-list.component';
-import { HomeComponent } from './features/user/components/home/home.component';
+import { HomeComponent } from './shared/components/home/home.component';
 import { ServiceValidationComponent } from './features/admin/components/service-validation/service-validation.component';
 import { RoleManagementComponent } from './features/admin/components/role-management/role-management.component';
 import { RaitingDashboardComponent } from './features/admin/components/raiting-dashboard/raiting-dashboard.component';
@@ -20,8 +20,21 @@ import { ClientManagementComponent } from './features/host/components/client-man
 import { ReservationManagementComponent } from './features/host/components/reservation-management/reservation-management.component';
 import { ComentariosComponent } from './shared/components/comentarios/comentarios.component';
 import { ComentarioComponent } from './shared/components/comentario/comentario.component';
-import { DatePipe } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule, DatePipe } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -42,12 +55,27 @@ import { ReactiveFormsModule } from '@angular/forms';
     ClientManagementComponent,
     ReservationManagementComponent,
     ComentariosComponent,
-    ComentarioComponent
+    ComentarioComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule ,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatListModule,
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [
     provideClientHydration(),

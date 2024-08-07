@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+
+  <app-navbar></app-navbar>
+  <!-- <header class="airbnb-header">
+    <div class="logo">
+        <img src="/Instahub-frontEnd/src/app/assets/img/logo.jpg" alt="Airbnb">
+    </div>
+    <nav>
+      <ul>
+        <li class="active">Estancias</li>
+        <li>Experiencias</li>
+      </ul>
+    </nav>
+    <div class="user-menu">
+      <button class="host-button">Pon tu casa en InstaHub</button>
+      <button class="user-button">
+        <span class="menu-icon">☰</span>
+        <span class="user-icon">👤</span>
+      </button>
+    </div>
+  </header> -->
+
+  <main>
+    <section class="search-bar">
+      <div class="search-input">
+        <div class="search-field">
+          <label>Destino</label>
+          <input type="text" [(ngModel)]="searchLocation" placeholder="Buscar destinos">
+        </div>
+        <div class="search-field">
+          <label>Llegada</label>
+          <input type="date" [(ngModel)]="searchDateFrom" placeholder="Agregar fechas">
+        </div>
+        <div class="search-field">
+          <label>Salida</label>
+          <input type="date" [(ngModel)]="searchDateTo" placeholder="Agregar fechas">
+        </div>
+        <button class="search-button" (click)="onSearch()">🔍</button>
+      </div>
+    </section>
+    
+    <section class="categories">
+        <div class="category-item" 
+        [class.active]="selectedCategory === 'All'"
+        (click)="filterByCategory('All')">
+     <span>Todo</span>
+   </div>
+      <div *ngFor="let category of categories" 
+           class="category-item" 
+           [class.active]="selectedCategory === category"
+           (click)="filterByCategory(category)">
+        <span>{{ category }}</span>
+      </div>
+
+    </section>
+    
+    <section class="listings">
+      <div *ngIf="loading">Cargando habitaciones...</div>
+      <div *ngIf="error">{{ error }}</div>
+      <div *ngIf="!loading && !error && filteredBedrooms.length === 0">No se encontraron habitaciones.</div>
+      <div *ngFor="let bedroom of filteredBedrooms" class="listing-card">
+        <a [routerLink]="['/room-details', bedroom._id]">
+          <img [src]="bedroom.image" [alt]="bedroom.title" class="listing-image">
+        </a>
+        <div class="listing-info">
+          <h3>{{ bedroom.title }}</h3>
+          <p>Anfitrión: {{ bedroom.host }}</p>
+          <p>{{ bedroom.location }}</p>
+          <p class="price">{{ bedroom.price.toFixed(2) }} MXN por noche</p>
+          <p>{{ bedroom.date }}</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
