@@ -1,1 +1,16 @@
-<p>reservation-form works!</p>
+<form class="form" formGroup="reservacionForm" (ngSubmit)="createReservacion()">
+    <h2>Hacer reservación</h2>
+    <h3>Usuario: </h3>
+    <h3>Habitación: </h3>
+    <label for="">Fecha De Ingreso</label>
+    <input type="date" formControlName="fecha_ingreso">
+    <label for="">Fecha de Termino</label>
+    <input type="date" formControlName="fecha_termino">
+    <label for="">Hora de Llegada</label>
+    <input type="time" formControlName="hora_llegada">
+    <label for="">Hora de Salida</label>
+    <input type="time" formControlName="hora_salida">
+    <label for="">Huespedes</label>
+    <input type="number" formControlName="huespedes">
+    <button type="submit">Enviar</button>
+</form>
