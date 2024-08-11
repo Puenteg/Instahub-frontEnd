@@ -8,10 +8,14 @@ import { Comentario } from '../../../core/services/comentarios.service';
 })
 export class ComentarioComponent {
 
-  @Input() comentario: Comentario;
+  dataComentario: Comentario|null;
+
+  @Input() set comentario(comentario: Comentario) {
+    this.dataComentario = comentario;
+  }
 
   constructor() {
-    this.comentario = {calificacion: 0, comentario: '', autor: '', fecha: '' };
+    this.dataComentario = null;
   }
 
 
