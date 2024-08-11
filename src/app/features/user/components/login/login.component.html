@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<header>
+  <app-navbar></app-navbar>
+
+</header>
+<body>  
+  <div class="login-container">
+    <div class="background-image">
+      <form  class="login-form">
+        <div class="form-group" >
+          <label for="email">Correo electrónico:</label>
+          <input type="email"  id="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group" >
+          <label for="password">Contraseña:</label>
+          <input type="password"  id="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit"  class="btn btn-primary">Iniciar sesión</button>
+        <div class="container-restarpassw">
+          <br>
+          <div>
+            <a id="forgot-password" href="/recuperacion">¿Olvidaste tu contraseña?</a>
+            <br>
+            <a id="new-register-login" href="/registro">¿No tienes cuenta? Regístrate aquí</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+<app-footer></app-footer>
+</html>
