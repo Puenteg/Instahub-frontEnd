@@ -1,11 +1,13 @@
-<div class="row">
-  <div class="text-center">
-    <h1>Sección Comentarios</h1>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <h1>Sección Comentarios</h1>
+    </div>
   </div>
 </div>
 
 <!-- Nuevo comentario -->
-<div class="row">
+<div class="container">
   <div>
     <h5 class="text-center">Calíficanos</h5>
   </div>
@@ -15,7 +17,11 @@
     <div class="col-md-4" [formGroup]="formComentario">
       <div class="mb-3">
         <label for="autor" class="form-label">Autor</label>
-        <input type="text" class="form-control" id="autor" placeholder="" formControlName="autor">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">{{ formComentario.get('autor')?.value }}</span>
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label for="autor" class="form-label">Calificación</label>
@@ -23,7 +29,7 @@
       </div>
       <div class="mb-3">
         <label for="comentario" class="form-label">Comentario</label>
-        <textarea class="form-control" id="comentario" rows="3" formControlName="comentario"></textarea>
+        <textarea class="form-control" id="comentario" rows="3" formControlName="comentario" maxlength="250"></textarea>
       </div>
       <div class="mb-3 d-grid gap-2 d-md-flex justify-content-md-end">
         <button class="btn btn-primary" (click)="enviarComentario()">Enviar</button>
@@ -31,11 +37,11 @@
     </div>
   </div>
   <hr>
-  <!-- {{ formComentario.value | json }}
-  {{ comentarios | json }} -->
 </div>
 
 <!-- Comentarios existentes -->
-<div class="row">
-  <app-comentario class="col-md-6" *ngFor="let comentario of comentarios" [comentario]="comentario"></app-comentario>
+<div class="container">
+  <div class="row">
+    <app-comentario class="col-md-4" *ngFor="let comentario of comentarios" [comentario]="comentario"></app-comentario>
+  </div>
 </div>
