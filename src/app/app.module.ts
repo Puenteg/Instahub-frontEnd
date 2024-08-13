@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './features/user/components/login/login.component';
+import { RegistroComponent } from './features/user/components/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LoginComponent } from './features/user/components/login/login.component
     ReservationManagementComponent,
     ComentariosComponent,
     ComentarioComponent,
+    RegistroComponent,
   ],
   imports: [
     CommonModule,
