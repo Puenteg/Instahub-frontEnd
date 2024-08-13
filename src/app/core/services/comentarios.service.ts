@@ -11,6 +11,14 @@ export interface Comentario {
   idBedrooms: string;
 }
 
+export interface Estadisticas {
+  estrella1: { cantidad: number, porcentaje: number|null }
+  estrella2: { cantidad: number, porcentaje: number|null }
+  estrella3: { cantidad: number, porcentaje: number|null }
+  estrella4: { cantidad: number, porcentaje: number|null }
+  estrella5: { cantidad: number, porcentaje: number|null }
+}
+
 const COMENTARIOS_DATA: Comentario[] = [
   { "calificacion": 5, "comentario": "Bueno", "autor": "31287638176631", "fecha": "04/08/2024", "idBedrooms": "1" },
   { "calificacion": 4, "comentario": "Bueno", "autor": "31287638176632", "fecha": "04/08/2024", "idBedrooms": "2" },
@@ -36,9 +44,21 @@ export class ComentariosService {
   }
 
   saveComentario(comentario: Comentario): Promise<Comentario> {
-    console.info(comentario)
     return firstValueFrom<Comentario>(this.httpClient.post<Comentario>(`${this._urlComentarios}`, comentario));
     // return Promise.resolve(comentario);
+  }
+
+  getEstadisticas(id: number): Promise<Estadisticas>  {
+    return firstValueFrom<Estadisticas>(this.httpClient.get<Estadisticas>(`${this._urlComentarios}/estadisticas/${id}`));
+  }
+
+  reportar(idComentario: string): Promise<any> {
+    return firstValueFrom<any>(this.httpClient.put<any>(`${this._urlComentarios}/reportar/${idComentario}`, null));
+  }
+
+  deleteComentario(idComentario: string): Promise<Comentario> {
+    firstValueFrom<any>(this.httpClient.delete<Comentario>(`${this._urlComentarios}/${idComentario}`))
+    return firstValueFrom<Comentario>(this.httpClient.post<Comentario>(`${this._urlComentarios}/${idComentario}`, {responseType: 'json'}));
   }
 
 }
