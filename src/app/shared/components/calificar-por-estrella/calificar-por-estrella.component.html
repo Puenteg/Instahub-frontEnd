@@ -1,0 +1,8 @@
+<div class="stars-container mt-2">
+  <div *ngFor="let star of starsArray; let i = index" class="star" (click)="selectRating(i)" [ngClass]="{'selected': (5 - rating <= i) }">
+      <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24">
+          <path fill="#00000"
+              d="m7.69 19.346l1.614-5.33L5.115 11h5.216L12 5.462L13.67 11h5.215l-4.189 3.015l1.614 5.331L12 16.07z" />
+      </svg>
+  </div>
+</div>

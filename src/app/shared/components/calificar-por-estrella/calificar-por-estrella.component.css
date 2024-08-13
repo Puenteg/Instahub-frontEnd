@@ -1,0 +1,48 @@
+.stars-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: .7rem;
+  cursor: pointer;
+  flex-direction: row-reverse;
+
+  .star {
+      transition: .3s ease;
+
+      svg {
+          width: 3rem;
+          height: auto;
+
+          path {
+              fill: gray; /* Color de las estrellas no seleccionadas */
+              transition: fill .3s ease; /* Transición suave del color */
+          }
+      }
+
+      &:hover ~ .star svg path {
+          fill: gold; /* Color de las estrellas seleccionadas al hacer hover */
+      }
+
+      &:hover svg path {
+          fill: gold; /* Color de la estrella seleccionada al hacer hover */
+      }
+
+      &.selected ~ .star svg path {
+          fill: gold; /* Color de las estrellas seleccionadas al hacer hover */
+      }
+
+      &.selected svg path {
+        fill: gold; /* Color de la estrella seleccionada al hacer hover */
+    }
+
+      &selected svg path {
+          fill: gold; /* Color de la estrella seleccionada al hacer hover */
+      }
+  }
+}
+
+.star:hover svg path,
+.star:hover~.star svg path,
+.star.highlighted svg path {
+  fill: gold;
+}

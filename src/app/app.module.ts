@@ -23,6 +23,7 @@ import { ComentarioComponent } from './shared/components/comentario/comentario.c
 import { DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ClientManagementComponent,
     ReservationManagementComponent,
     ComentariosComponent,
-    ComentarioComponent
+    ComentarioComponent,
+    CalificarPorEstrellaComponent
   ],
   imports: [
     BrowserModule,
