@@ -1,16 +1,25 @@
-<form class="form" formGroup="reservacionForm" (ngSubmit)="createReservacion()">
-    <h2>Hacer reservación</h2>
-    <h3>Usuario: </h3>
-    <h3>Habitación: </h3>
-    <label for="">Fecha De Ingreso</label>
-    <input type="date" formControlName="fecha_ingreso">
-    <label for="">Fecha de Termino</label>
-    <input type="date" formControlName="fecha_termino">
-    <label for="">Hora de Llegada</label>
-    <input type="time" formControlName="hora_llegada">
-    <label for="">Hora de Salida</label>
-    <input type="time" formControlName="hora_salida">
-    <label for="">Huespedes</label>
-    <input type="number" formControlName="huespedes">
-    <button type="submit">Enviar</button>
-</form>
+<section class="container">
+    <section class="one">
+        <h2 class="heading">
+            Habitación:
+        </h2>
+        <br>
+        <p> Realiza tu reservación ahora
+        </p>
+        <form [formGroup]="reservacionForm" (ngSubmit)="agregarReservacion()">
+            <label>Fecha de Ingreso</label>
+            <input type="date" formControlName="fecha_ingreso">
+            <label>Fecha de Termino</label>
+            <input type="date" formControlName="fecha_termino">
+            <label>Hora de Llegada</label>
+            <input type="time" formControlName="hora_llegada">
+            <label>Fecha de Salida</label>
+            <input type="time" formControlName="hora_salida">
+            <label>Cantidad de Huespedes</label>
+            <input type="number" formControlName="huespedes" placeholder="Huespedes">
+            <button class="btn" role="button">
+                Hacer Reservación
+            </button>
+        </form>
+    </section>
+</section>
