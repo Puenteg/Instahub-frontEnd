@@ -22,8 +22,9 @@ import { ComentariosComponent } from './shared/components/comentarios/comentario
 import { ComentarioComponent } from './shared/components/comentario/comentario.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReservationManagementComponent,
     ComentariosComponent,
     ComentarioComponent,
+    CalificarPorEstrellaComponent,
+    Feature-Admin-service-validation
   ],
   imports: [
     CommonModule,
@@ -52,7 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [
     provideClientHydration(),

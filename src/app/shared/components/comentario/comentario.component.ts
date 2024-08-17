@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Comentario } from '../../../core/services/comentarios.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Comentario, ComentariosService } from '../../../core/services/comentarios.service';
 
 @Component({
   selector: 'app-comentario',
@@ -8,11 +8,43 @@ import { Comentario } from '../../../core/services/comentarios.service';
 })
 export class ComentarioComponent {
 
-  @Input() comentario: Comentario;
+  dataComentario: Comentario|null;
 
-  constructor() {
-    this.comentario = {calificacion: 0, comentario: '', autor: '', fecha: '' };
+  @Input() set comentario(comentario: Comentario) {
+    this.dataComentario = comentario;
   }
 
+  @Output() refresh: EventEmitter<void> = new EventEmitter<void>();
+
+  constructor(private comentariosService: ComentariosService) {
+    this.dataComentario = null;
+  }
+
+  reportar(): void {
+    if(this.dataComentario?._id) {
+      this.comentariosService.reportar(this.dataComentario._id).then(
+        (success) => {
+          alert(success.message)
+          this.refresh.emit()
+        }, (error) => {
+          console.error(error)
+        }
+      )
+    }
+  }
+
+  validaComentarioAutor(): boolean {
+    return true;
+  }
+
+  eliminar(): void {
+    if(this.dataComentario?._id) {
+      this.comentariosService.deleteComentario(this.dataComentario._id).then(
+        (success) => {
+          this.refresh.emit();
+        }
+      )
+    }
+  }
 
 }
