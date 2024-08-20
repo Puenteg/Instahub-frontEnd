@@ -46,10 +46,30 @@ export class AuthService {
     return false;
   }
 
-  getToken(): string | null {
-    if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('token');
-    }
-    return null;
+// Método para verificar el token y obtener el rol
+verificarToken(token: string): Observable<any> {
+  return this.http.post(`${this.apiUrl}/validar-token`, { token });
+}
+
+// Obtener el token desde el localStorage
+getToken(): string | null {
+  if (isPlatformBrowser(this.platformId)) {
+    return localStorage.getItem('token');
   }
+  return null;
+}
+
+// Guardar el token en el localStorage
+setToken(token: string): void {
+  if (isPlatformBrowser(this.platformId)) {
+    localStorage.setItem('token', token);
+  }
+}
+
+// Eliminar el token del localStorage (Logout)
+removeToken(): void {
+  if (isPlatformBrowser(this.platformId)) {
+    localStorage.removeItem('token');
+  }
+}
 }

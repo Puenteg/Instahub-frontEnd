@@ -18,11 +18,12 @@ export class RegistroComponent {
     private router: Router
   ) {
     this.registroForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      nombre: ['', [Validators.required]],
+      correo: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-      password: ['', [Validators.required, Validators.minLength(6), this.passwordStrengthValidator]],
-      confirmPassword: ['', [Validators.required]]
+      rol: ['usuario', [Validators.required]],
+      contrasena: ['', [Validators.required, Validators.minLength(6), this.passwordStrengthValidator]],
+      confirmContrasena: ['', [Validators.required]]
     }, { validators: this.passwordMatchValidator });
   }
 
@@ -42,8 +43,8 @@ export class RegistroComponent {
   }
 
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
+    const password = control.get('contrasena');
+    const confirmPassword = control.get('confirmContrasena');
 
     if (password && confirmPassword && password.value !== confirmPassword.value) {
       return { passwordMismatch: true };
@@ -55,7 +56,7 @@ export class RegistroComponent {
   onSubmit() {
     if (this.registroForm.valid) {
       const formData = { ...this.registroForm.value };
-      delete formData.confirmPassword;
+      delete formData.confirmContrasena;
       this.authService.registro(formData).subscribe(
         response => {
           console.log('Registro exitoso', response);

@@ -13,16 +13,18 @@ export class LoginComponent {
   errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
+
   onSubmit() {
     if (this.validateForm()) {
       this.authService.login(this.email, this.password).subscribe(
         (response: any) => {
           if (response.success) {
-            console.log('Inicio de sesión exitoso');
-            this.errorMessage = 'Se ha enviado un token a tu correo electrónico. Por favor, verifica tu bandeja de entrada.';
-            console.log('Redirigiendo a /home');
-            this.router.navigate(['/home']);
-            } else {
+            const token = response.token;  // Suponiendo que el token viene en la respuesta
+            this.authService.setToken(token);  // Guardar el token en el localStorage
+
+            // Redirigir al usuario a la pantalla de validación de token
+            this.router.navigate(['/token']);
+          } else {
             this.errorMessage = response.msg || 'Error en el inicio de sesión';
           }
         },

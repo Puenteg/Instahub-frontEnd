@@ -65,8 +65,12 @@ nav ul li.active::after {
   display: flex;
   align-items: center;
   background-color: #f7f7f7;
-  padding: 5px 10px;
+  padding: 5px 20px; /* Aumenta el ancho del botón ajustando el padding */
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
 }
+
 
 .user-menu .menu-icon {
   margin-right: 5px;
@@ -210,4 +214,36 @@ nav ul li.active::after {
     flex: 48%;
     margin: 5px 0;
   }
+}
+.user-menu-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.dropdown-menu .dropdown-item {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f1f1f1;
+  width: 100px;
+
+}
+
+
+.user-menu-container .dropdown-menu {
+  display: block;
 }

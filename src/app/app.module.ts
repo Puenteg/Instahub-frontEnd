@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './features/user/components/login/login.component';
 import { RegistroComponent } from './features/user/components/registro/registro.component';
+import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RegistroComponent } from './features/user/components/registro/registro.
     ComentariosComponent,
     ComentarioComponent,
     RegistroComponent,
+    ValidateTokenComponent
   ],
   imports: [
     CommonModule,

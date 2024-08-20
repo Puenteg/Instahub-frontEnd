@@ -1,37 +1,42 @@
-<!-- registro.component.html -->
-
 <app-navbar></app-navbar>
-
 <div class="login-container">
   <div class="background-image">
     <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="login-form">
-      <h2>Registro de Usuario</h2>
       <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" formControlName="name" class="form-control" required>
+        <label for="nombre">Nombre:</label>
+        <input type="text" formControlName="nombre" class="form-control" id="nombre" required>
       </div>
+
       <div class="form-group">
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" formControlName="email" class="form-control" required>
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" formControlName="correo" class="form-control" id="correo" required>
       </div>
+
       <div class="form-group">
         <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" formControlName="telefono" class="form-control" required>
-        <small *ngIf="registroForm.get('telefono')?.errors?.['pattern']">Solo se permiten números.</small>
+        <input type="text" formControlName="telefono" class="form-control" id="telefono" required>
       </div>
+
       <div class="form-group">
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" formControlName="password" class="form-control" required>
-        <small *ngIf="registroForm.get('password')?.errors?.['passwordStrength']">
-          La contraseña debe contener al menos una mayúscula, una minúscula y un número.
-        </small>
+        <label for="rol">Rol:</label>
+        <select formControlName="rol" class="form-control" id="rol">
+          <option value="administrador">Administrador</option>
+          <option value="anfitrion">Anfitrión</option>
+          <option value="usuario">Usuario</option>
+        </select>
       </div>
+
       <div class="form-group">
-        <label for="confirmPassword">Confirmar Contraseña:</label>
-        <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" required>
-        <small *ngIf="registroForm.errors?.['passwordMismatch']">Las contraseñas no coinciden.</small>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" formControlName="contrasena" class="form-control" id="contrasena" required>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!registroForm.valid">Registrarse</button>
+
+      <div class="form-group">
+        <label for="confirmContrasena">Confirmar Contraseña:</label>
+        <input type="password" formControlName="confirmContrasena" class="form-control" id="confirmContrasena" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Registrar</button>
       <div *ngIf="error" class="error-message">
         {{ error }}
       </div>

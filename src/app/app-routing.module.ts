@@ -4,11 +4,13 @@ import { HomeComponent } from './features/user/components/home/home.component';
 import { LoginComponent } from './features/user/components/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { RegistroComponent } from './features/user/components/registro/registro.component';
+import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
 
 const routes: Routes = [
   { path: 'home', component:  HomeComponent},
   { path: 'login', component:  LoginComponent },
   { path: 'registro', component: RegistroComponent },
+  { path: 'token', component: ValidateTokenComponent },
 
 ];
 // canActivate: [AuthGuard]
