@@ -110,7 +110,7 @@ export class ComentariosComponent {
     return true;
   }
 
-  getPorcentaje(porcentaje: number|null): string {
+  getFormat2Decimales(porcentaje: number|null): string {
     if(porcentaje) {
       const enteros = Math.trunc(porcentaje);
       const texto = `${porcentaje}`.split('.')
@@ -140,7 +140,6 @@ export class ComentariosComponent {
     const maximoPuntos = conteoCalificaciones * 5;
     this.estadisticas.promedio = `${(conteoPuntos * 5 / maximoPuntos)}`;
     this.estadisticas.totalCalificaciones = conteoCalificaciones;
-    console.info(this.estadisticas)
   }
 
 }
