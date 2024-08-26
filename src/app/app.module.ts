@@ -22,8 +22,9 @@ import { ComentariosComponent } from './shared/components/comentarios/comentario
 import { ComentarioComponent } from './shared/components/comentario/comentario.component';
 import { DatePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
+import { ValidationComponent } from './features/admin/components/validation/validation.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CalificarPorEstrellaComponent } from './shared/components/calificar-por
     ReservationManagementComponent,
     ComentariosComponent,
     ComentarioComponent,
-    CalificarPorEstrellaComponent
+    CalificarPorEstrellaComponent,
+    ValidationComponent
   ],
   imports: [
     BrowserModule,
