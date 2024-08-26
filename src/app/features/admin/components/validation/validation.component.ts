@@ -70,7 +70,6 @@ export class ValidationComponent {
       this.habitacion.estatus = this.getEstatus(isValid);
       this.habitacion.criteriosARevisar = criteriosARevisar;
       this.habitacion.comentarios = this.formCriterios.get('comentarios')?.value
-      console.info('Publicar: ', this.habitacion?.estatus)
       this.actualizarHabitacion(this.habitacion)
     }
     this.setDefaulCriteriosAceptacion();
@@ -89,7 +88,6 @@ export class ValidationComponent {
 
   setHabitacion(bedRoom: BedRoom): void {
     this.habitacion = bedRoom;
-    console.info(this.habitacion)
     this.defaultFormCriterios();
     this.formCriterios.get('comentarios')?.patchValue(this.habitacion.comentarios||'')
   }

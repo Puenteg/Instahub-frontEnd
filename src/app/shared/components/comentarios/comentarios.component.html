@@ -16,7 +16,7 @@
     <div class="col-md-5">
       <div class="row" *ngFor="let estadistica of constEstrellas">
         <div class="col-md-5">
-          <b>{{estadistica}} Estrella</b> {{ getPorcentaje(estadisticas['estrella'+estadistica].porcentaje) }}%
+          <b>{{estadistica}} Estrella</b> {{ getFormat2Decimales(estadisticas['estrella'+estadistica].porcentaje) }}%
         </div>
         <div class="col-md-7">
           <div class="progress">
@@ -27,7 +27,7 @@
       <div class="row">
         <div class="mt-2" style="margin-left: 10px;">
           <b>{{ estadisticas.totalCalificaciones }}</b> calificaciones globales <br>
-          <b>{{ estadisticas.promedio }}</b> de 5 estrellas
+          <b>{{ getFormat2Decimales(estadisticas.promedio) }}</b> de 5 estrellas
         </div>
       </div>
     </div>
