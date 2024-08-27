@@ -20,11 +20,15 @@ import { ComentariosComponent } from './shared/components/comentarios/comentario
 import { ComentarioComponent } from './shared/components/comentario/comentario.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { LoginComponent } from './features/user/components/login/login.component';
 import { RegistroComponent } from './features/user/components/registro/registro.component';
 import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
+=======
+import { DatePipe } from '@angular/common';
+import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
+>>>>>>> feature-home
 
 @NgModule({
   declarations: [
@@ -45,8 +49,13 @@ import { ValidateTokenComponent } from './features/user/components/validate-toke
     ReservationManagementComponent,
     ComentariosComponent,
     ComentarioComponent,
+<<<<<<< HEAD
     RegistroComponent,
     ValidateTokenComponent
+=======
+    CalificarPorEstrellaComponent,
+    Feature-Admin-service-validation
+>>>>>>> feature-home
   ],
   imports: [
     CommonModule,
@@ -54,7 +63,7 @@ import { ValidateTokenComponent } from './features/user/components/validate-toke
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [
     provideClientHydration(),
