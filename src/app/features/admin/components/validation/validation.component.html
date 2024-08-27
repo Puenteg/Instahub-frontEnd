@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="row mt-4">
+    <hr>
+    <h1>Habitaciones por revisar</h1>
+    <hr>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <table class="table table-striped">
+      <caption>Tabla de habitaciones por validar</caption>
+      <thead>
+        <tr>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">#</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Título</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Categoría</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Precio</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Estatus</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-primary" *ngFor="let tblHabitacion of tblHabitaciones; let i = index">
+          <th scope="col">{{ i+1 }}</th>
+          <td scope="col">{{ tblHabitacion.title }}</td>
+          <td scope="col">{{ tblHabitacion.category }}</td>
+          <td scope="col">{{ tblHabitacion.price }}</td>
+          <td scope="col">{{ tblHabitacion.estatus || 'En revisión' }}</td>
+          <td scope="col" style="max-width: 50px;">
+            <div class="d-flex">
+              <!-- <button class="btn btn-success" (click)="publicar()"> Publicar </button>
+              <span class="m-2"></span>
+              <button class="btn btn-danger" (click)="openModalRechazar()"> Rechazar </button> -->
+               <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="setHabitacion(tblHabitacion)">
+                Revisar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Criterios de Aceptación</h5>
+        <button hidden="true" id="btnCancelarModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container" [formGroup]="formCriterios">
+          <div class="row">
+            <table class="table table-striped">
+              <caption>Tabla de criterios de aceptación</caption>
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">#</th>
+                  <th scope="col">Criterio</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr [ngClass]="{ 'table-danger': !formCriterios.get('lenguage')?.value, 'table-success': formCriterios.get('lenguage')?.value}">
+                  <th scope="col"> 1 </th>
+                  <th scope="col">{{ criteriosAceptacion.lenguage.mensaje }}</th>
+                  <td scope="col"><input type="checkbox" formControlName="lenguage"></td>
+                </tr>
+                <tr [ngClass]="{ 'table-danger': !formCriterios.get('longitud')?.value, 'table-success': formCriterios.get('longitud')?.value}">
+                  <th scope="col"> 2 </th>
+                  <th scope="col">{{ criteriosAceptacion.longitud.mensaje }}</th>
+                  <td scope="col"><input type="checkbox" formControlName="longitud"></td>
+                </tr>
+                <tr [ngClass]="{ 'table-danger': !formCriterios.get('estadoHabitacion')?.value, 'table-success': formCriterios.get('estadoHabitacion')?.value}">
+                  <th scope="col"> 3 </th>
+                  <th scope="col">{{ criteriosAceptacion.estadoHabitacion.mensaje }}</th>
+                  <td scope="col"><input type="checkbox" formControlName="estadoHabitacion"></td>
+                </tr>
+                <tr [ngClass]="{ 'table-danger': !formCriterios.get('capacidad')?.value, 'table-success': formCriterios.get('capacidad')?.value}">
+                  <th scope="col"> 4 </th>
+                  <th scope="col">{{ criteriosAceptacion.capacidad.mensaje }}</th>
+                  <td scope="col"><input type="checkbox" formControlName="capacidad"></td>
+                </tr>
+              </tbody>
+            </table>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="input-group">
+              <span class="input-group-text">Comentarios</span>
+              <textarea class="form-control" aria-label="Comentarios" formControlName="comentarios"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="verificarCriterios()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

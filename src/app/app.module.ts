@@ -27,8 +27,15 @@ import { RegistroComponent } from './features/user/components/registro/registro.
 import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
 =======
 import { DatePipe } from '@angular/common';
+<<<<<<< HEAD
 import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
 >>>>>>> feature-home
+=======
+import { ReactiveFormsModule } from '@angular/forms';
+import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
+import { ValidationComponent } from './features/admin/components/validation/validation.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+>>>>>>> 5ed172e94014cd6e4f6339f7439119c350ba04a6
 
 @NgModule({
   declarations: [
@@ -50,12 +57,17 @@ import { CalificarPorEstrellaComponent } from './shared/components/calificar-por
     ComentariosComponent,
     ComentarioComponent,
 <<<<<<< HEAD
+<<<<<<< HEAD
     RegistroComponent,
     ValidateTokenComponent
 =======
     CalificarPorEstrellaComponent,
     Feature-Admin-service-validation
 >>>>>>> feature-home
+=======
+    CalificarPorEstrellaComponent,
+    ValidationComponent
+>>>>>>> 5ed172e94014cd6e4f6339f7439119c350ba04a6
   ],
   imports: [
     CommonModule,
