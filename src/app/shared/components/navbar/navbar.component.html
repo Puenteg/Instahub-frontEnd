@@ -7,7 +7,7 @@
   <nav>
   </nav>
   <div class="user-menu">
-    <button *ngIf="!isLoggedIn" class="host-button" (click)="goToRegister()">Convierte tu casa en InstaHub</button>
+    <button *ngIf="!isLoggedIn && !isOnRegisterPage" class="host-button" (click)="goToRegister()">Convierte tu casa en InstaHub</button>
     <div class="user-menu-container" *ngIf="isLoggedIn">
       <button class="user-button" (click)="toggleMenu()">
         <span class="menu-icon">☰</span>

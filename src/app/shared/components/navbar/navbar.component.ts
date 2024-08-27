@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,11 +10,19 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
   menuOpen: boolean = false;
+  isOnRegisterPage: boolean = false;
 
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    // Detectar cambios de ruta
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isOnRegisterPage = this.router.url === '/registro';
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.updateLoginStatus();
@@ -38,6 +46,4 @@ export class NavbarComponent implements OnInit {
     this.menuOpen = false; // Cierra el menú
     this.router.navigate(['/login']); // Redirige al usuario a la página de login
   }
-
-
 }

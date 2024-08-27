@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -21,21 +20,11 @@ import { ComentarioComponent } from './shared/components/comentario/comentario.c
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { LoginComponent } from './features/user/components/login/login.component';
 import { RegistroComponent } from './features/user/components/registro/registro.component';
 import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
-=======
-import { DatePipe } from '@angular/common';
-<<<<<<< HEAD
-import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
->>>>>>> feature-home
-=======
-import { ReactiveFormsModule } from '@angular/forms';
 import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
 import { ValidationComponent } from './features/admin/components/validation/validation.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
->>>>>>> 5ed172e94014cd6e4f6339f7439119c350ba04a6
 
 @NgModule({
   declarations: [
@@ -56,18 +45,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReservationManagementComponent,
     ComentariosComponent,
     ComentarioComponent,
-<<<<<<< HEAD
-<<<<<<< HEAD
     RegistroComponent,
-    ValidateTokenComponent
-=======
-    CalificarPorEstrellaComponent,
-    Feature-Admin-service-validation
->>>>>>> feature-home
-=======
+    ValidateTokenComponent,
     CalificarPorEstrellaComponent,
     ValidationComponent
->>>>>>> 5ed172e94014cd6e4f6339f7439119c350ba04a6
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { ReservacionService } from '../../../../core/services/reservacion.service';
 import { subscribe } from 'diagnostics_channel';
 import { error } from 'console';
+import { Reservacion } from '../../../../models/reservacion';
 
 @Component({
   selector: 'app-reservation-form',
