@@ -6,6 +6,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './features/host/components/sidebar/sidebar.component';
 import { ReservationFormComponent } from './features/user/components/reservation-form/reservation-form.component';
+// import { BedroomDetailsComponent } from './features/user/components/room-details/room-details.component';
 import { RoomDetailsComponent } from './features/user/components/room-details/room-details.component';
 import { HomeComponent } from './features/user/components/home/home.component';
 import { ServiceValidationComponent } from './features/admin/components/service-validation/service-validation.component';
