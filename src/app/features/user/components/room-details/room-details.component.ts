@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BedroomService } from '../../services/bedroom.service';
+import { BedroomService } from '../../../../core/services/bedroom.service';
 
 @Component({
   selector: 'app-room-details',
