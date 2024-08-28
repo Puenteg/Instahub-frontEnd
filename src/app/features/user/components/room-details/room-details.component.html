@@ -1,228 +1,60 @@
-<!-- <mat-card class="bedroom-details-card">
-  <mat-card-header>
-    <mat-card-title>{{ bedroom.title }}</mat-card-title>
-    <mat-card-subtitle>Hosted by {{ bedroom.host }}</mat-card-subtitle>
-  </mat-card-header>
+  <app-navbar></app-navbar>
 
-
-  <mat-card-content>
-    <ngx-slick-carousel class="carousel" 
-      #slickModal="slick-carousel" 
-      [config]="slideConfig">
-      <div ngxSlickItem *ngFor="let image of bedroom.images">
-        <img [src]="image" alt="{{ bedroom.title }}" class="slide-image">
-      </div>
-    </ngx-slick-carousel>
-  </mat-card-content>
-
-
-  <mat-card-content>
-    <mat-list>
-      <mat-list-item>
-        <mat-icon mat-list-icon>location_on</mat-icon>
-        <div mat-line>{{ bedroom.location }}</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>attach_money</mat-icon>
-        <div mat-line>{{ bedroom.price | currency }} per night</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>category</mat-icon>
-        <div mat-line>{{ bedroom.category }}</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>event</mat-icon>
-        <div mat-line>Available from {{ bedroom.date }}</div>
-      </mat-list-item>
-    </mat-list>
-
-
-    <div class="description">
-      <p><strong>Description:</strong></p>
-      <p>{{ bedroom.fullDescription }}</p>
-    </div>
-  </mat-card-content>
-
-
-  <mat-card-content>
-    <h3>Services</h3>
-    <mat-chip-list>
-      <mat-chip *ngFor="let service of bedroom.services">{{ service }}</mat-chip>
-    </mat-chip-list>
-  </mat-card-content>
-
- <mat-card-content>
-      <app-comments [bedroomId]="bedroom.id"></app-comments>
-
-</mat-card>
-
-
-  Comments Section
-  <mat-card-content>
-      <app-comments [bedroomId]="bedroom.id"></app-comments>
-    </mat-card-content>
-  </mat-card>
-
-Description Modal
-<ng-template #descriptionModal>
-  <h2 mat-dialog-title>{{ bedroom.title }} - Full Description</h2>
-  <mat-dialog-content>
-    <p>{{ bedroom.fullDescription }}</p>
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Close</button>
-  </mat-dialog-actions>
-</ng-template> -->
-
-<!-- <div *ngIf="bedroom; else loading">
-  <h2>{{ bedroom.title }}</h2>
-  <img [src]="bedroom.image" alt="{{ bedroom.title }}" class="bedroom-image" />
-  <p><strong>Host:</strong> {{ bedroom.host }}</p>
-  <p><strong>Location:</strong> {{ bedroom.location }}</p>
-  <p><strong>Price per night:</strong> {{ bedroom.price | currency }}</p>
-  <p><strong>Category:</strong> {{ bedroom.category }}</p>
-  <p><strong>Date Available:</strong> {{ bedroom.date }}</p>
-  <p><strong>Description:</strong></p>
-  <p>{{ bedroom.fullDescription }}</p>
-  
-  <h3>Services:</h3>
-  <ul>
-    <li *ngFor="let service of bedroom.services">{{ service }}</li>
-  </ul>
-</div>
-
-<ng-template #loading>
-  <p>Loading room details...</p>
-</ng-template>
-
-<div *ngIf="errorMessage" class="error-message">
-  <p>{{ errorMessage }}</p>
-</div> -->
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-<app-navbar></app-navbar>
-  
-<div class="wrapper">
-  <div class="container">
-    <div *ngIf="bedroom">
-      <h2>{{ bedroom.title }}</h2>
-      
+  <div class="wrapper">
+    <div class="container" *ngIf="bedroom">
+      <h1>{{ bedroom.title }}</h1>
       <div class="image-container">
-          <img [src]="bedroom.image" alt="{{ bedroom.title }}" class="image">
+        <img [src]="bedroom.image" [alt]="bedroom.title">
       </div>
-      <br>
-      <h2>{{ bedroom.title }}</h2>
-      <br>
-
-      <p><strong>Descripción:</strong> {{ bedroom.description }}</p>
-      <mat-list>
-        <div mat-subheader></div>
-          <mat-list-item>
-            <p><strong><span class="material-icons orange600">face</span> Anfitrión:</strong> {{ bedroom.host }}</p>
-          </mat-list-item>
-        <div ></div>
-          <mat-list-item>
-            <p><strong><i class="fas fa-th-list"></i> Categoría:</strong> {{ bedroom.category }}</p>
-          </mat-list-item>
-          <mat-list-item>
-            <p><strong><i class="fas fa-map-marker-alt"></i> Ubicación:</strong> {{ bedroom.location }}</p>
-          </mat-list-item>
-          <mat-list-item>
-            <p><strong><i class="fas fa-weight"></i> Precio:</strong> {{ bedroom.price }} MXN por noche</p>
-          </mat-list-item>
-          <mat-list-item>
-            <p><strong><i class="fas fa-calendar-alt"></i> Fecha:</strong> {{ bedroom.date }}</p>
-          </mat-list-item>
-      </mat-list>
-      <mat-divider></mat-divider>
-
-      <br>
-      <p><strong>Servicios:</strong></p>
-      <ul>
-        <li *ngFor="let service of bedroom.services">{{ service }}</li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-  
-</body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>{{ bedroom.title }}</title> -->
-    <style>
-        /* ... (mantener los estilos CSS previos) ... */
-    </style>
-</head>
-<body>
-    <app-navbar></app-navbar>
-    
-    <div class="wrapper">
-        <div class="container" *ngIf="bedroom">
-            <h1>{{ bedroom.title }}</h1>
-            <div class="image-container">
-                <img [src]="bedroom.image" [alt]="bedroom.title">
+      <div class="details">
+       
+        <div class="left-column">
+            <h4>Disfruta de un buen servicio con {{bedroom.title}}, una habitación que te ayuda a descansar</h4>
+          <div class="feature">
+            <i class="fas fa-medal"></i>
+            <span> {{bedroom.description}}</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-user-friends"></i>
+            <span> {{bedroom.host}} - Años de experiencia en el servicio</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-building"></i>
+            <span> Categoria de servicios - "{{ bedroom.category }}"</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-map"></i>
+            <span> Alojamiento ubicado en {{ bedroom.location }}</span>
+          </div>
+          <br>
+            <h4>Descrube más del lugar</h4>
+            <span> {{ bedroom.fullDescription }}</span>
+          <br>
+          <h4>Lo que este lugar ofrece</h4>
+          <div class="amenities">
+            <div class="amenity" *ngFor="let service of bedroom.services">
+              <i></i> {{ service }}
             </div>
-            <div class="details">
-                <div class="left-column">
-                    <div class="feature">
-                        <i class="fas fa-user-friends"></i>
-                        <span>{{ bedroom.guests }} huéspedes · {{ bedroom.bedrooms }} habitación · {{ bedroom.beds }} camas · {{ bedroom.bathrooms }} baño</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-medal"></i>
-                        <span>{{ bedroom.experience }} años de experiencia</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-building"></i>
-                        <span>{{ bedroom.checkInInfo }}</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-swimming-pool"></i>
-                        <span>{{ bedroom.uniqueFeature }}</span>
-                    </div>
-                    <p>{{ bedroom.fullDescription }}</p>
-                    <h3>Lo que este lugar ofrece</h3>
-                    <div class="amenities">
-                        <div class="amenity" *ngFor="let service of bedroom.services">
-                            <i ></i> {{ service }}
-                        </div>
-                    </div>
-                </div>
-                <div class="right-column">
-                    <div class="price">{{ bedroom.price | currency:'MXN':'symbol-narrow' }} <span>noche</span></div>
-                    <div class="price-details">
-                        <p>{{ bedroom.date }}</p>
-                        <p>{{ bedroom.guests }} huésped</p>
-                        <p>{{ bedroom.price | currency:'MXN':'symbol-narrow' }} x {{ bedroom.nights }} noches</p>
-                        <!-- <p>Tarifa de limpieza: {{ bedroom.cleaningFee | currency:'MXN':'symbol-narrow' }}</p> -->
-                        <!-- <p>Tarifa de servicio de Airbnb: {{ bedroom.serviceFee | currency:'MXN':'symbol-narrow' }}</p> -->
-                        <!-- <p>{{ bedroom.description }}</p> -->
-                        <p>Total Price: {{ calculateTotal(bedroom.price, 2) }}</p> <!-- Asegúrate de que esta llamada sea válida -->
-                    </div>
-                    <button >Reservar</button>
-                </div>
-            </div>
-            <div class="reviews">
-                <h3>Opiniones</h3>
-                <div class="review" *ngFor="let review of bedroom.reviews">
-                    <p><strong>{{ review.location }}</strong></p>
-                    <p>{{ review.comment }}</p>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="right-column">
+          <div class="price">{{ bedroom.price | currency:'MXN':'symbol-narrow' }} <span>noche</span></div>
+          <div class="price-details">
+            <p>Registra las noches que desas pasar en el {{ bedroom.title }}<p>
+            <p>Incluye los huéspeds necesarios</p>
+            <p>
+              Puedes comenzar a reservar haz clic aqui abajo.
+            </p>
+          </div>
+          <button [routerLink]="['/reservation']" >Reservar</button>
+        </div>
+      </div>
+      <div class="reviews">
+        <h3>Opiniones</h3>
+        <div class="review" *ngFor="let review of bedroom.reviews">
+        </div>
+      </div>
     </div>
-</body>
-</html>
+  </div>
+
+  <app-comentario></app-comentario>

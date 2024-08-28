@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BedroomService {
-  private apiUrl = 'http://localhost:9000/api/details'; // Asegúrate de que esta URL sea la correcta
+  private apiUrl = 'http://localhost:9000/api/bedroom'; // Asegúrate de que esta URL sea la correcta
 
   constructor(private http: HttpClient) {}
 
