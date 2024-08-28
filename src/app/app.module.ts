@@ -8,6 +8,7 @@ import { FooterComponent } from './features/user/components/footer/footer.compon
 import { NavbarComponent } from './features/user/components/navbar/navbar.component';
 import { SidebarComponent } from './features/host/components/sidebar/sidebar.component';
 import { ReservationFormComponent } from './features/user/components/reservation-form/reservation-form.component';
+// import { BedroomDetailsComponent } from './features/user/components/room-details/room-details.component';
 import { RoomDetailsComponent } from './features/user/components/room-details/room-details.component';
 import { RoomListComponent } from './features/user/components/room-list/room-list.component';
 import { HomeComponent } from './shared/components/home/home.component';
@@ -34,6 +35,11 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+// import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -56,6 +62,7 @@ import {MatMenuModule} from '@angular/material/menu';
     ReservationManagementComponent,
     ComentariosComponent,
     ComentarioComponent,
+
   ],
   imports: [
     CommonModule,
@@ -75,11 +82,15 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDividerModule,
     MatListModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatChipsModule,
+    MatDialogModule
+    
   ],
   providers: [
     provideClientHydration(),
-    DatePipe
+    DatePipe,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

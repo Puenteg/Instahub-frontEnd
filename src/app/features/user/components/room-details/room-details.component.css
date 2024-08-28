@@ -1,4 +1,242 @@
-.room-details-container {
+/* Estilos generales */
+body {
+  font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  line-height: 1.43;
+  color: #222222;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.container {
+  max-width: 1120px;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* Encabezado */
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+/* Contenedor de imagen */
+.image-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Diseño de columnas */
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.left-column {
+  width: 58%;
+}
+
+.right-column {
+  width: 38%;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 24px;
+  height: fit-content;
+}
+
+/* Características y amenidades */
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.feature i {
+  margin-right: 12px;
+  color: #717171;
+  font-size: 24px;
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.amenity {
+  width: 50%;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.amenity i {
+  margin-right: 12px;
+  color: #717171;
+}
+
+/* Precios y reserva */
+.price {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.price span {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.price-details {
+  font-size: 14px;
+  color: #717171;
+}
+
+.total {
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #dddddd;
+}
+
+button {
+  background-color: #FF385C;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 24px;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #D70466;
+}
+
+/* Reseñas */
+.reviews {
+  margin-top: 48px;
+}
+
+.review {
+  border-top: 1px solid #dddddd;
+  padding: 24px 0;
+}
+
+.review p:first-child {
+  font-weight: 600;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .details {
+      flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+      width: 100%;
+  }
+
+  .right-column {
+      margin-top: 24px;
+  }
+
+  .amenity {
+      width: 100%;
+  }
+}
+
+
+
+
+/* .bedroom-details-card {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.slide-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+mat-card-content {
+  margin-top: 20px;
+}
+
+.mat-chip-list {
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 20px;
+} */
+/* .bedroom-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  font-size: 1rem;
+  background-color: #f4f4f4;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
+} */
+
+/* .room-details-container {
     display: flex;
     justify-content: center;
     margin: 20px;
@@ -58,7 +296,7 @@
     align-items: center; 
     height: 100vh; 
     object-fit: cover; 
-    margin-top: 200px; /* Ajusta este valor según la altura de tu navbar */
+    margin-top: 200px; 
     padding: 20px;
   }
   
@@ -89,4 +327,4 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
   
-  .material-icons.orange600 { color: #FB8C00; }
+  .material-icons.orange600 { color: #FB8C00; } */
