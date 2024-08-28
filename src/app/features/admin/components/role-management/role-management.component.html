@@ -1,1 +1,45 @@
-<p>role-management works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="row mt-4">
+    <hr>
+    <h1 style="text-align: center;">Usuarios del sistema</h1>
+    <hr>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <table class="table table-striped">
+      <caption>Tabla de habitaciones por validar</caption>
+      <thead>
+        <tr>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">#</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Nombre</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Correo</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Teléfono</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Rol</th>
+          <th style="background-color: rgb(11, 97, 177); color: white"scope="col">Estatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-primary" *ngFor="let tblUsuario of tblUsuarios; let i = index">
+          <th scope="col">{{ i+1 }}</th>
+          <td scope="col">{{ tblUsuario.nombre }}</td>
+          <td scope="col">{{ tblUsuario.correo }}</td>
+          <td scope="col">{{ tblUsuario.telefono }}</td>
+          <td scope="col">{{ tblUsuario.rol }}</td>
+          <td scope="col" style="max-width: 50px;">
+            <div class="d-flex">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" [checked]="tblUsuario.estatus" (change)="cambioEstatusUsuario($event, tblUsuario._id)">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-footer></app-footer>

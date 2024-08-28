@@ -1,17 +1,20 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Comentario, ComentariosService } from '../../../core/services/comentarios.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { Observable, Subject, take } from 'rxjs';
 
 @Component({
   selector: 'app-comentarios',
   templateUrl: './comentarios.component.html',
   styleUrl: './comentarios.component.css'
 })
-export class ComentariosComponent {
+export class ComentariosComponent implements AfterViewInit {
 
   constEstrellas = ['1','2','3','4','5']
   starsArray: boolean[] = new Array(5);
+  $nombreUsuario = new Observable<string>();
 
   id: number = 0;
   estadisticas: any = {
@@ -32,15 +35,27 @@ export class ComentariosComponent {
   formComentario: FormGroup;
   messageError: string = '';
 
-  constructor(private comentariosService: ComentariosService, private fb: FormBuilder, private datePipe: DatePipe) {
+  constructor(private comentariosService: ComentariosService, private fb: FormBuilder, private datePipe: DatePipe
+    , private authService: AuthService
+  ) {
     this.formComentario = this.fb.group({
-      autor: ['login.service.autor.nombre'],
+      autor: [this.authService.getValueNombre()],
       calificacion: [0],
       comentario: [''],
       fecha: this.datePipe.transform(new Date(), 'dd/MM/yyyy'),
       idBedrooms: [this.id]
     });
     this.setValueDefaultForm();
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      var token = this.authService.getNombre()
+      if(token){
+        this.$nombreUsuario = this.authService.getNombre();
+        this.formComentario.get('autor')?.patchValue(this.authService.getValueNombre())
+      }
+    }, 500)
   }
 
   getComentarios(id: number): void {
@@ -76,7 +91,7 @@ export class ComentariosComponent {
 
   setValueDefaultForm(): void {
     this.formComentario = this.fb.group({
-      autor: ['login.service.autor.nombre'],
+      autor: [this.authService.getValueNombre()],
       calificacion: [0],
       comentario: [''],
       fecha: this.datePipe.transform(new Date(), 'dd/MM/yyyy'),
@@ -88,6 +103,7 @@ export class ComentariosComponent {
     if(!this.validaComentario()) {
       return
     }
+    console.info(this.formComentario.value)
     this.comentariosService.saveComentario(this.formComentario?.value).then(
       (success) => {
         this.setValueDefaultForm();

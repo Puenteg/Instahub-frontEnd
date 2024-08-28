@@ -57,8 +57,8 @@ export class ComentariosService {
   }
 
   deleteComentario(idComentario: string): Promise<Comentario> {
-    firstValueFrom<any>(this.httpClient.delete<Comentario>(`${this._urlComentarios}/${idComentario}`))
-    return firstValueFrom<Comentario>(this.httpClient.post<Comentario>(`${this._urlComentarios}/${idComentario}`, {responseType: 'json'}));
+    return firstValueFrom<any>(this.httpClient.delete<Comentario>(`${this._urlComentarios}/${idComentario}`))
+    // return firstValueFrom<Comentario>(this.httpClient.post<Comentario>(`${this._urlComentarios}/${idComentario}`, {responseType: 'json'}));
   }
 
 }
