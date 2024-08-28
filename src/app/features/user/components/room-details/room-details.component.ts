@@ -39,5 +39,7 @@ export class RoomDetailsComponent implements OnInit {
       return 0;
     }
 
+    
+
 }
 

@@ -12,15 +12,15 @@
             <h4>Disfruta de un buen servicio con {{bedroom.title}}, una habitación que te ayuda a descansar</h4>
           <div class="feature">
             <i class="fas fa-medal"></i>
-            <span> {{bedroom.description}}</span>
+            <span>      {{bedroom.description}}</span>
           </div>
           <div class="feature">
             <i class="fas fa-user-friends"></i>
-            <span> {{bedroom.host}} - Años de experiencia en el servicio</span>
+            <span> Anfitrión: {{bedroom.host}} ,con años de experiencia en el servicio</span>
           </div>
           <div class="feature">
             <i class="fas fa-building"></i>
-            <span> Categoria de servicios - "{{ bedroom.category }}"</span>
+            <span> Categoria de servicios "{{ bedroom.category }}"</span>
           </div>
           <div class="feature">
             <i class="fas fa-map"></i>
@@ -33,7 +33,7 @@
           <h4>Lo que este lugar ofrece</h4>
           <div class="amenities">
             <div class="amenity" *ngFor="let service of bedroom.services">
-              <i></i> {{ service }}
+              <i class="fas fa-star"></i> {{ service }}
             </div>
           </div>
         </div>

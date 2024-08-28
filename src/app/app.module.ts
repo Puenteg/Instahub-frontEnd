@@ -6,9 +6,9 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './features/host/components/sidebar/sidebar.component';
 import { ReservationFormComponent } from './features/user/components/reservation-form/reservation-form.component';
-// import { BedroomDetailsComponent } from './features/user/components/room-details/room-details.component';
 import { RoomDetailsComponent } from './features/user/components/room-details/room-details.component';
-import { HomeComponent } from './features/user/components/home/home.component';
+// import { HomeComponent } from './features/user/components/home/home.component';
+import { HomeComponent} from './shared/components/home/home.component'
 import { ServiceValidationComponent } from './features/admin/components/service-validation/service-validation.component';
 import { RoleManagementComponent } from './features/admin/components/role-management/role-management.component';
 import { RaitingDashboardComponent } from './features/admin/components/raiting-dashboard/raiting-dashboard.component';
@@ -26,6 +26,7 @@ import { RegistroComponent } from './features/user/components/registro/registro.
 import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
 import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
 import { ValidationComponent } from './features/admin/components/validation/validation.component';
+import { RouterModule } from '@angular/router'; 
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ValidationComponent } from './features/admin/components/validation/vali
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [
     provideClientHydration(),
