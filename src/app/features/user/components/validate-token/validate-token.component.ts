@@ -35,7 +35,7 @@ export class ValidateTokenComponent {
             } else if (rol === 'anfitrion') {
               this.router.navigate(['/anfitrion']);
             } else if (rol === 'usuario') {
-              this.router.navigate(['/home']);
+              this.router.navigate(['']);
             }
           } else {
             this.errorMessage = 'Token no válido. Por favor, intenta de nuevo.';
