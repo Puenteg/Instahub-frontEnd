@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RoleManagementService } from './role-management.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-role-management',
@@ -10,14 +11,14 @@ export class RoleManagementComponent {
 
   tblUsuarios: any[] = [];
 
-  constructor(private service: RoleManagementService) {
+  constructor(private service: RoleManagementService, private authService: AuthService) {
     this.getUsuarios()
   }
 
   getUsuarios(): void {
     this.service.getUsuarios().then(
       (success) => {
-        this.tblUsuarios = success
+        this.tblUsuarios = success.filter((f: any) => f._id !== this.authService.getValueId())
       }
     );
   }

@@ -7,7 +7,7 @@
         <img [src]="bedroom.image" [alt]="bedroom.title">
       </div>
       <div class="details">
-       
+
         <div class="left-column">
             <h4>Disfruta de un buen servicio con {{bedroom.title}}, una habitación que te ayuda a descansar</h4>
           <div class="feature">
@@ -57,4 +57,4 @@
     </div>
   </div>
 
-  <app-comentario></app-comentario>
+  <app-comentarios [idCasa]="bedroom._id"></app-comentarios>
