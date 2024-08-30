@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CalificarPorEstrellaComponent {
 
   @Input() rating: number = 0;
+  @Input() isFocuseable: boolean = true;
+
   @Output() ratingChange: EventEmitter<number> = new EventEmitter<number>();
   starsArray: boolean[] = new Array(5);
 
