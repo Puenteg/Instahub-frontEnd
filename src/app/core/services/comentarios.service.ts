@@ -38,7 +38,7 @@ export class ComentariosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getComentarios(id:number): Promise<Comentario[]> {
+  getComentarios(id: string): Promise<Comentario[]> {
     return firstValueFrom<Comentario[]>(this.httpClient.get<Comentario[]>(`${this._urlComentarios}/${id}`));
     // return Promise.resolve(COMENTARIOS_DATA);
   }
@@ -48,7 +48,7 @@ export class ComentariosService {
     // return Promise.resolve(comentario);
   }
 
-  getEstadisticas(id: number): Promise<Estadisticas>  {
+  getEstadisticas(id: string): Promise<Estadisticas>  {
     return firstValueFrom<Estadisticas>(this.httpClient.get<Estadisticas>(`${this._urlComentarios}/estadisticas/${id}`));
   }
 

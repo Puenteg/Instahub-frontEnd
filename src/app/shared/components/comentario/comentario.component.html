@@ -3,8 +3,7 @@
     <div class="col-md-12">
       <div class="card-body">
         <h5 class="card-title">{{dataComentario.autor}}</h5>
-        <!-- TODO: Cambiar el valor númerico por estrellas -->
-        <h6><b>{{dataComentario.calificacion}}</b></h6>
+        <app-calificar-por-estrella [rating]="dataComentario.calificacion" [isFocuseable]="false"></app-calificar-por-estrella>
         <p class="card-text">{{dataComentario.comentario}}</p>
         <p class="card-text"><small class="text-body-secondary">{{dataComentario.fecha}}</small></p>
         <div class="d-flex flex-row-reverse">

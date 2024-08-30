@@ -16,7 +16,7 @@ export class ComentariosComponent implements AfterViewInit {
   starsArray: boolean[] = new Array(5);
   $nombreUsuario = new Observable<string>();
 
-  id: number = 0;
+  id: string = '';
   estadisticas: any = {
     estrella1: {cantidad: 0, porcentaje: null},
     estrella2: {cantidad: 0, porcentaje: null},
@@ -25,7 +25,7 @@ export class ComentariosComponent implements AfterViewInit {
     estrella5: {cantidad: 0, porcentaje: null},
   }
 
-  @Input() set idCasa(idCasa: number) {
+  @Input() set idCasa(idCasa: string) {
     this.id = idCasa;
     this.getComentarios(idCasa)
     this.setValueDefaultForm();
@@ -58,8 +58,8 @@ export class ComentariosComponent implements AfterViewInit {
     }, 500)
   }
 
-  getComentarios(id: number): void {
-    if(id !==0 ) {
+  getComentarios(id: string): void {
+    if(id) {
       this.comentariosService.getComentarios(id).then(
         (success) => {
           this.comentarios = success
@@ -154,8 +154,13 @@ export class ComentariosComponent implements AfterViewInit {
       }
     });
     const maximoPuntos = conteoCalificaciones * 5;
-    this.estadisticas.promedio = `${(conteoPuntos * 5 / maximoPuntos)}`;
-    this.estadisticas.totalCalificaciones = conteoCalificaciones;
+    if(maximoPuntos !== 0) {
+      this.estadisticas.promedio = `${(conteoPuntos * 5 / maximoPuntos)}`;
+      this.estadisticas.totalCalificaciones = conteoCalificaciones;
+    } else {
+      this.estadisticas.promedio = `0`;
+      this.estadisticas.totalCalificaciones = conteoCalificaciones;
+    }
   }
 
 }

@@ -10,7 +10,8 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   private apiUrl = 'http://localhost:9000/api/auth';
 
-  $nombreUsuario = new BehaviorSubject<string>('');
+  $nombreUsuario = new BehaviorSubject('');
+  $idUsuario = new BehaviorSubject('');
 
   constructor(
     private http: HttpClient,
@@ -27,8 +28,10 @@ export class AuthService {
         if (response.success) {
           localStorage.setItem('token', response.token); // Guarda el token
           localStorage.setItem('rol', response.rol); // Guarda el rol si es necesario
-          this.$nombreUsuario.next(response.nombre);
-          localStorage.setItem('nombre', response.nombre);
+          this.$nombreUsuario.next(response.nombre)
+          this.$nombreUsuario.next(response._id)
+          localStorage.setItem('nombre', response.nombre)
+          localStorage.setItem('id', response._id)
         }
       })
     );
@@ -45,6 +48,15 @@ export class AuthService {
 
   getValueNombre(): string {
     return this.$nombreUsuario.getValue();
+  }
+
+  getValueId(): string {
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('id')) {
+        this.$idUsuario.next(localStorage.getItem('id')||'')
+      }
+    }
+    return this.$idUsuario.getValue();
   }
 
   logout() {
