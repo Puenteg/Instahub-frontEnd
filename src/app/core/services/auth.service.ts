@@ -4,14 +4,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { tap } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = 'http://localhost:9000/api/auth';
 
-  $nombreUsuario = new BehaviorSubject('');
+  $nombreUsuario = new BehaviorSubject<string>('');
 
   constructor(
     private http: HttpClient,
@@ -28,8 +27,8 @@ export class AuthService {
         if (response.success) {
           localStorage.setItem('token', response.token); // Guarda el token
           localStorage.setItem('rol', response.rol); // Guarda el rol si es necesario
-          this.$nombreUsuario.next(response.nombre)
-          localStorage.setItem('nombre', response.nombre)
+          this.$nombreUsuario.next(response.nombre);
+          localStorage.setItem('nombre', response.nombre);
         }
       })
     );
@@ -38,7 +37,7 @@ export class AuthService {
   getNombre(): Observable<string> {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('nombre')) {
-        this.$nombreUsuario.next(localStorage.getItem('nombre')||'')
+        this.$nombreUsuario.next(localStorage.getItem('nombre') || '');
       }
     }
     return this.$nombreUsuario.asObservable();
@@ -53,7 +52,7 @@ export class AuthService {
       localStorage.removeItem('token');
       localStorage.removeItem('rol');
       localStorage.removeItem('nombre');
-      this.$nombreUsuario.next('')
+      this.$nombreUsuario.next('');
     }
   }
 
@@ -64,30 +63,30 @@ export class AuthService {
     return false;
   }
 
-// Método para verificar el token y obtener el rol
-verificarToken(token: string): Observable<any> {
-  return this.http.post(`${this.apiUrl}/validar-token`, { token });
-}
-
-// Obtener el token desde el localStorage
-getToken(): string | null {
-  if (isPlatformBrowser(this.platformId)) {
-    return localStorage.getItem('token');
+  // Método para verificar el token y obtener el rol
+  verificarToken(token: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/validar-token`, { token });
   }
-  return null;
-}
 
-// Guardar el token en el localStorage
-setToken(token: string): void {
-  if (isPlatformBrowser(this.platformId)) {
-    localStorage.setItem('token', token);
+  // Obtener el token desde el localStorage
+  getToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('token');
+    }
+    return null;
   }
-}
 
-// Eliminar el token del localStorage (Logout)
-removeToken(): void {
-  if (isPlatformBrowser(this.platformId)) {
-    localStorage.removeItem('token');
+  // Guardar el token en el localStorage
+  setToken(token: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('token', token);
+    }
   }
-}
+
+  // Eliminar el token del localStorage (Logout)
+  removeToken(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+    }
+  }
 }

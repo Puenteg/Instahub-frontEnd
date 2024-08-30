@@ -1,0 +1,215 @@
+.room-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.room-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.room-form p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-check-input {
+  margin-right: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.skip-button {
+  background-color: #f8f9fa;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.container {
+  max-width: 1120px;
+  width: 100%;
+  background-color: #f4f4f4;
+  box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* Encabezado */
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+
+/* Diseño de columnas */
+.crud {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.left-column {
+  width: 68%;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 24px;
+  height: fit-content;
+  box-shadow: 0px 6px 10px rgb(171, 170, 179, 0.4); 
+}
+
+.right-column {
+  width: 38%;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 24px;
+  height: fit-content;
+  box-shadow: 0px 6px 10px rgba(6, 4, 91, 0.4);
+}
+
+/* Características y amenidades */
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.feature i {
+  margin-right: 12px;
+  color: #717171;
+  font-size: 24px;
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+button {
+  background-color: #053c7e;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 24px;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #12498c;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .details {
+      flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+      width: 100%;
+  }
+
+  .right-column {
+      margin-top: 24px;
+  }
+
+  .amenity {
+      width: 100%;
+  }
+}
+
+.h1{
+  align-items: center;
+}
+
+
+.right-column {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: left;
+}
+
+
+.input-group {
+  margin-bottom: 12px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.input-group select,
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

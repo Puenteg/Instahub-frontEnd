@@ -26,7 +26,9 @@ import { RegistroComponent } from './features/user/components/registro/registro.
 import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
 import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
 import { ValidationComponent } from './features/admin/components/validation/validation.component';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
+import { HostHomeComponent } from './features/host/components/host-home/host-home.component';
+import { RoomListComponent } from './features/host/components/room-list/room-list.component'; 
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { RouterModule } from '@angular/router';
     RegistroComponent,
     ValidateTokenComponent,
     CalificarPorEstrellaComponent,
-    ValidationComponent
+    ValidationComponent,
+    HostHomeComponent,
+    RoomListComponent
   ],
   imports: [
     CommonModule,

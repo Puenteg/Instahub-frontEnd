@@ -8,7 +8,10 @@ import { RegistroComponent } from './features/user/components/registro/registro.
 import { AuthGuard } from './auth.guard';
 import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
 import { RoleManagementComponent } from './features/admin/components/role-management/role-management.component';
-
+import { RaitingDashboardComponent } from './features/admin/components/raiting-dashboard/raiting-dashboard.component';
+import { HostHomeComponent } from './features/host/components/host-home/host-home.component';
+import { RoomCrudComponent } from './features/host/components/room-crud/room-crud.component';
+import { RoomListComponent } from './features/host/components/room-list/room-list.component';
 
 const routes: Routes = [
   { path: '', component:  HomeComponent },
@@ -16,8 +19,15 @@ const routes: Routes = [
   { path: 'registro', component:  RegistroComponent },
   { path: 'token', component:  ValidateTokenComponent },
   { path: 'admin', component:  RoleManagementComponent },
+  // { path: 'room-details/:id', component: RoomDetailsComponent },
   { path: 'room-details/:id', component: RoomDetailsComponent },
   { path: 'reservation', component: ReservationFormComponent },
+  { path: 'dashboard', component: RaitingDashboardComponent },
+  { path: 'host-home', component: HostHomeComponent },
+  { path: 'room-crud', component: RoomCrudComponent },
+  { path: 'room-list', component: RoomListComponent },
+  { path: 'room-list/:hostId', component: RoomListComponent },
+
 
 ];
 
