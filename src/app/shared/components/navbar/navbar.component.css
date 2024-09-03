@@ -55,6 +55,9 @@ nav ul li.active::after {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .user-menu .host-button {
@@ -65,14 +68,29 @@ nav ul li.active::after {
   display: flex;
   align-items: center;
   background-color: #f7f7f7;
-  padding: 5px 20px; /* Aumenta el ancho del botón ajustando el padding */
+  padding: 8px 16px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
+.user-menu .user-button:hover {
+  background-color: #e0e0e0;
+}
+.user-menu .user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 .user-menu .menu-icon {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.user-menu .user-name {
+  font-weight: bold;
   margin-right: 5px;
 }
 

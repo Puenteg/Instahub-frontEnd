@@ -4,9 +4,8 @@ import { Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { tap } from 'rxjs/operators';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:9000/api/auth';
@@ -19,18 +18,18 @@ export class AuthService {
   registro(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/registro`, userData);
   }
-  
-  login(correo: string, contrasena: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { correo, contrasena }).pipe(
-      tap((response: any) => {
-        if (response.success) {
-          localStorage.setItem('token', response.token); // Guarda el token
-          localStorage.setItem('rol', response.rol); // Guarda el rol si es necesario
-        }
-      })
-    );
-  }
-  
+
+login(correo: string, contrasena: string): Observable<any> {
+  return this.http.post(`${this.apiUrl}/login`, { correo, contrasena }).pipe(
+    tap((response: any) => {
+      if (response.success) {
+        localStorage.setItem('token', response.token); // Guarda el token
+        localStorage.setItem('nombre', response.nombre); // Guarda el nombre del usuario
+      }
+    })
+  );
+}
+
 
   logout() {
     if (isPlatformBrowser(this.platformId)) {
@@ -46,30 +45,36 @@ export class AuthService {
     return false;
   }
 
-// Método para verificar el token y obtener el rol
-verificarToken(token: string): Observable<any> {
-  return this.http.post(`${this.apiUrl}/validar-token`, { token });
-}
-
-// Obtener el token desde el localStorage
-getToken(): string | null {
-  if (isPlatformBrowser(this.platformId)) {
-    return localStorage.getItem('token');
+  // Método para verificar el token y obtener el rol
+  verificarToken(token: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/validar-token`, { token });
   }
-  return null;
-}
 
-// Guardar el token en el localStorage
-setToken(token: string): void {
-  if (isPlatformBrowser(this.platformId)) {
-    localStorage.setItem('token', token);
+  // Obtener el token desde el localStorage
+  getToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('token');
+    }
+    return null;
   }
-}
 
-// Eliminar el token del localStorage (Logout)
-removeToken(): void {
-  if (isPlatformBrowser(this.platformId)) {
-    localStorage.removeItem('token');
+  // Guardar el token en el localStorage
+  setToken(token: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('token', token);
+    }
   }
-}
+
+  // Eliminar el token del localStorage (Logout)
+  removeToken(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+    }
+  }
+  getUserName(): string {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('userName') || '';
+    }
+    return '';
+  }
 }

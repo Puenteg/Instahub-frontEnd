@@ -10,6 +10,10 @@
     <button *ngIf="!isLoggedIn && !isOnRegisterPage" class="host-button" (click)="goToRegister()">Convierte tu casa en InstaHub</button>
     <div class="user-menu-container" *ngIf="isLoggedIn">
       <button class="user-button" (click)="toggleMenu()">
+        <div class="user-info">
+          <span class="user-icon">👤</span>
+          <span class="user-name">{{ userName }}</span>
+        </div>
         <span class="menu-icon">☰</span>
       </button>
       <div class="dropdown-menu" *ngIf="menuOpen">

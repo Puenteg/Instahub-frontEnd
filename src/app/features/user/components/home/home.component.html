@@ -10,12 +10,13 @@
       </div>
       <div class="search-field">
         <label>Fecha de Ingreso</label>
-        <input type="date" [(ngModel)]="searchDateFrom" placeholder="Agregar fechas">
+        <input type="date" [(ngModel)]="searchDateFrom" [min]="todayString" placeholder="Agregar fechas">
       </div>
       <div class="search-field">
         <label>Fecha de Salida</label>
-        <input type="date" [(ngModel)]="searchDateTo" placeholder="Agregar fechas">
+        <input type="date" [(ngModel)]="searchDateTo" [min]="todayString" placeholder="Agregar fechas">
       </div>
+      
       <button class="search-button" (click)="onSearch()">🔍</button>
     </div>
 

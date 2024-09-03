@@ -33,7 +33,7 @@ export class ValidateTokenComponent {
             if (rol === 'administrador') {
               this.router.navigate(['/admin']);
             } else if (rol === 'anfitrion') {
-              this.router.navigate(['/anfitrion']);
+              this.router.navigate(['']);
             } else if (rol === 'usuario') {
               this.router.navigate(['']);
             }

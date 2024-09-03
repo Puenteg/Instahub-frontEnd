@@ -11,12 +11,13 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
   menuOpen: boolean = false;
   isOnRegisterPage: boolean = false;
+  userName: string = '';
+  userRole: string = '';
 
   constructor(
     private authService: AuthService,
     private router: Router
   ) {
-    // Detectar cambios de ruta
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isOnRegisterPage = this.router.url === '/registro';
@@ -26,24 +27,32 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateLoginStatus();
+    if (this.isLoggedIn) {
+      this.loadUserInfo();
+    }
   }
 
   updateLoginStatus(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
 
+  loadUserInfo(): void {
+    this.userName = localStorage.getItem('nombre') || '';
+    this.userRole = localStorage.getItem('rol') || '';
+  }
+
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
   }
-  
+
   goToRegister(): void {
-    this.router.navigate(['/registro']); // Redirige al usuario a la página de registro
+    this.router.navigate(['/registro']);
   }
 
   logout(): void {
     this.authService.logout();
-    this.updateLoginStatus(); // Actualiza el estado local
-    this.menuOpen = false; // Cierra el menú
-    this.router.navigate(['/login']); // Redirige al usuario a la página de login
+    this.updateLoginStatus();
+    this.menuOpen = false;
+    this.router.navigate(['/login']);
   }
 }
