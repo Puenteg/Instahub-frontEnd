@@ -38,7 +38,7 @@
         <label for="autor" class="form-label">Autor</label>
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">{{ formComentario.get('autor')?.value }}</span>
+            <span class="input-group-text" id="basic-addon1">{{ $nombreUsuario | async }}</span>
           </div>
         </div>
       </div>
@@ -65,6 +65,6 @@
 <!-- Comentarios existentes -->
 <div class="container">
   <div class="row row-justify-center">
-    <app-comentario class="col-md-4" *ngFor="let comentario of comentarios" [comentario]="comentario" (refresh)="getComentarios(id)"></app-comentario>
+    <app-comentario class="col-md-4 col-xl-4 col-lg-4 col-sm-4" *ngFor="let comentario of comentarios" [comentario]="comentario" (refresh)="getComentarios(id)"></app-comentario>
   </div>
 </div>

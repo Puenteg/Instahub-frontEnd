@@ -1,1 +1,54 @@
-<p>home works!</p>
+<!-- <app-navbar></app-navbar>
+
+<main>
+  
+  <section class="search-bar">
+    <div class="search-input">
+      <div class="search-field">
+        <label>Ingrese su Destino</label>
+        <input type="text" [(ngModel)]="searchLocation" placeholder="Buscar destinos">
+      </div>
+      <div class="search-field">
+        <label>Fecha de Ingreso</label>
+        <input type="date" [(ngModel)]="searchDateFrom" placeholder="Agregar fechas">
+      </div>
+      <div class="search-field">
+        <label>Fecha de Salida</label>
+        <input type="date" [(ngModel)]="searchDateTo" placeholder="Agregar fechas">
+      </div>
+      <button class="search-button" (click)="onSearch()">🔍</button>
+    </div>
+
+  </section>
+  
+  <section class="categories">
+    <div class="category-item" 
+         [class.active]="selectedCategory === 'All'"
+         (click)="filterByCategory('All')">
+      <span>Todo</span>
+    </div>
+    <div *ngFor="let category of categories" 
+         class="category-item" 
+         [class.active]="selectedCategory === category"
+         (click)="filterByCategory(category)">
+      <span>{{ category }}</span>
+    </div>
+  </section>
+  
+  <section class="listings">
+    <div *ngIf="loading">Cargando habitaciones...</div>
+    <div *ngIf="error">{{ error }}</div>
+    <div *ngIf="!loading && !error && filteredBedrooms.length === 0">No se encontraron habitaciones.</div>
+    <div *ngFor="let bedroom of filteredBedrooms" class="listing-card">
+      <img [src]="bedroom.image" [alt]="bedroom.title" class="listing-image">
+      <div class="listing-info">
+        <h3>{{ bedroom.title }}</h3>
+        <p>Anfitrión: {{ bedroom.host }}</p>
+        <p>{{ bedroom.location }}</p>
+        <p class="price">{{ bedroom.price.toFixed(2) }} USD por noche</p>
+        <p>Disponible hasta <br>{{ bedroom.date }}</p>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer> -->

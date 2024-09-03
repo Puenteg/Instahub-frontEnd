@@ -1,0 +1,25 @@
+<header class="airbnb-header">
+  <div class="logo">
+    <a href="">
+      <img src="assets/img/InstaHub.png" alt="InstaHub">
+    </a>
+  </div>
+  <nav>
+  </nav>
+  <div class="user-menu">
+    <button *ngIf="!isLoggedIn && !isOnRegisterPage" class="host-button" (click)="goToRegister()">Convierte tu casa en InstaHub</button>
+    <div class="user-menu-container" *ngIf="isLoggedIn">
+      <button class="user-button" (click)="toggleMenu()">
+        <span class="menu-icon">☰</span>
+      </button>
+      <div class="dropdown-menu" *ngIf="menuOpen">
+        <button class="dropdown-item" (click)="logout()">Logout</button>
+      </div>
+    </div>
+    <button *ngIf="!isLoggedIn" class="user-button">
+      <a href="/login">
+        <span class="user-icon">👤</span>
+      </a>
+    </button>
+  </div>
+</header>
