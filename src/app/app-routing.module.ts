@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'admin', component:  RoleManagementComponent },
   // { path: 'room-details/:id', component: RoomDetailsComponent },
   { path: 'room-details/:id', component: RoomDetailsComponent },
-  { path: 'reservation', component: ReservationFormComponent },
+  { path: 'reservation/:id', component: ReservationFormComponent },
   { path: 'dashboard', component: RaitingDashboardComponent },
   { path: 'host-home', component: HostHomeComponent },
   { path: 'room-crud', component: RoomCrudComponent },
