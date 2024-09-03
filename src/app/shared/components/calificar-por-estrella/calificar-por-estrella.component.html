@@ -1,4 +1,4 @@
-<div class="stars-container mt-2">
+<div class="mt-2" [ngClass]="{'stars-container': isFocuseable, 'stars-container-no-focus': !isFocuseable}">
   <div *ngFor="let star of starsArray; let i = index" class="star" (click)="selectRating(i)" [ngClass]="{'selected': (5 - rating <= i) }">
       <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24">
           <path fill="#00000"

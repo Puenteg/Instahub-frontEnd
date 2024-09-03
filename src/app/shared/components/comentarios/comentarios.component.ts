@@ -1,19 +1,22 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Comentario, ComentariosService } from '../../../core/services/comentarios.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { Observable, Subject, take } from 'rxjs';
 
 @Component({
   selector: 'app-comentarios',
   templateUrl: './comentarios.component.html',
   styleUrl: './comentarios.component.css'
 })
-export class ComentariosComponent {
+export class ComentariosComponent implements AfterViewInit {
 
   constEstrellas = ['1','2','3','4','5']
   starsArray: boolean[] = new Array(5);
+  $nombreUsuario = new Observable<string>();
 
-  id: number = 0;
+  id: string = '';
   estadisticas: any = {
     estrella1: {cantidad: 0, porcentaje: null},
     estrella2: {cantidad: 0, porcentaje: null},
@@ -22,7 +25,7 @@ export class ComentariosComponent {
     estrella5: {cantidad: 0, porcentaje: null},
   }
 
-  @Input() set idCasa(idCasa: number) {
+  @Input() set idCasa(idCasa: string) {
     this.id = idCasa;
     this.getComentarios(idCasa)
     this.setValueDefaultForm();
@@ -32,9 +35,11 @@ export class ComentariosComponent {
   formComentario: FormGroup;
   messageError: string = '';
 
-  constructor(private comentariosService: ComentariosService, private fb: FormBuilder, private datePipe: DatePipe) {
+  constructor(private comentariosService: ComentariosService, private fb: FormBuilder, private datePipe: DatePipe
+    , private authService: AuthService
+  ) {
     this.formComentario = this.fb.group({
-      autor: ['login.service.autor.nombre'],
+      autor: [this.authService.getValueNombre()],
       calificacion: [0],
       comentario: [''],
       fecha: this.datePipe.transform(new Date(), 'dd/MM/yyyy'),
@@ -43,8 +48,18 @@ export class ComentariosComponent {
     this.setValueDefaultForm();
   }
 
-  getComentarios(id: number): void {
-    if(id !==0 ) {
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      var token = this.authService.getNombre()
+      if(token){
+        this.$nombreUsuario = this.authService.getNombre();
+        this.formComentario.get('autor')?.patchValue(this.authService.getValueNombre())
+      }
+    }, 500)
+  }
+
+  getComentarios(id: string): void {
+    if(id) {
       this.comentariosService.getComentarios(id).then(
         (success) => {
           this.comentarios = success
@@ -76,7 +91,7 @@ export class ComentariosComponent {
 
   setValueDefaultForm(): void {
     this.formComentario = this.fb.group({
-      autor: ['login.service.autor.nombre'],
+      autor: [this.authService.getValueNombre()],
       calificacion: [0],
       comentario: [''],
       fecha: this.datePipe.transform(new Date(), 'dd/MM/yyyy'),
@@ -88,6 +103,7 @@ export class ComentariosComponent {
     if(!this.validaComentario()) {
       return
     }
+    console.info(this.formComentario.value)
     this.comentariosService.saveComentario(this.formComentario?.value).then(
       (success) => {
         this.setValueDefaultForm();
@@ -138,8 +154,13 @@ export class ComentariosComponent {
       }
     });
     const maximoPuntos = conteoCalificaciones * 5;
-    this.estadisticas.promedio = `${(conteoPuntos * 5 / maximoPuntos)}`;
-    this.estadisticas.totalCalificaciones = conteoCalificaciones;
+    if(maximoPuntos !== 0) {
+      this.estadisticas.promedio = `${(conteoPuntos * 5 / maximoPuntos)}`;
+      this.estadisticas.totalCalificaciones = conteoCalificaciones;
+    } else {
+      this.estadisticas.promedio = `0`;
+      this.estadisticas.totalCalificaciones = conteoCalificaciones;
+    }
   }
 
 }

@@ -7,7 +7,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { SidebarComponent } from './features/host/components/sidebar/sidebar.component';
 import { ReservationFormComponent } from './features/user/components/reservation-form/reservation-form.component';
 import { RoomDetailsComponent } from './features/user/components/room-details/room-details.component';
-import { HomeComponent } from './features/user/components/home/home.component';
+// import { HomeComponent } from './features/user/components/home/home.component';
+import { HomeComponent} from './shared/components/home/home.component'
 import { ServiceValidationComponent } from './features/admin/components/service-validation/service-validation.component';
 import { RoleManagementComponent } from './features/admin/components/role-management/role-management.component';
 import { RaitingDashboardComponent } from './features/admin/components/raiting-dashboard/raiting-dashboard.component';
@@ -25,6 +26,9 @@ import { RegistroComponent } from './features/user/components/registro/registro.
 import { ValidateTokenComponent } from './features/user/components/validate-token/validate-token.component';
 import { CalificarPorEstrellaComponent } from './shared/components/calificar-por-estrella/calificar-por-estrella.component';
 import { ValidationComponent } from './features/admin/components/validation/validation.component';
+import { RouterModule } from '@angular/router';
+import { HostHomeComponent } from './features/host/components/host-home/host-home.component';
+import { RoomListComponent } from './features/host/components/room-list/room-list.component'; 
 
 @NgModule({
   declarations: [
@@ -48,7 +52,9 @@ import { ValidationComponent } from './features/admin/components/validation/vali
     RegistroComponent,
     ValidateTokenComponent,
     CalificarPorEstrellaComponent,
-    ValidationComponent
+    ValidationComponent,
+    HostHomeComponent,
+    RoomListComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +62,8 @@ import { ValidationComponent } from './features/admin/components/validation/vali
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [
     provideClientHydration(),
