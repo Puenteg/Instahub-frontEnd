@@ -1,25 +1,33 @@
-<section class="container">
-    <section class="one">
-        <h2 class="heading">
-            Habitación:
-        </h2>
-        <br>
-        <p> Realiza tu reservación ahora
-        </p>
-        <form [formGroup]="reservacionForm" (ngSubmit)="agregarReservacion()">
-            <label>Fecha de Ingreso</label>
-            <input type="date" formControlName="fecha_ingreso">
-            <label>Fecha de Termino</label>
-            <input type="date" formControlName="fecha_termino">
-            <label>Hora de Llegada</label>
-            <input type="time" formControlName="hora_llegada">
-            <label>Fecha de Salida</label>
-            <input type="time" formControlName="hora_salida">
-            <label>Cantidad de Huespedes</label>
-            <input type="number" formControlName="huespedes" placeholder="Huespedes">
-            <button class="btn" role="button">
-                Hacer Reservación
-            </button>
-        </form>
-    </section>
-</section>
+<app-navbar></app-navbar>
+
+<body>
+
+    <div class="wrapper">
+        <section class="container">
+            <section class="one">
+                <br>
+                <p> Realiza tu reservación ahora
+                </p>
+                <form [formGroup]="reservacionForm" (ngSubmit)="agregarReservacion()">
+                    <h2 class="heading" *ngIf="bedroom">
+                        Habitación:
+                        <h2>{{ bedroom.title }}</h2>
+                    </h2>
+                    <label>Fecha de Ingreso</label>
+                    <input type="date" formControlName="fecha_ingreso" required>
+                    <label>Fecha de Termino</label>
+                    <input type="date" formControlName="fecha_termino" required>
+                    <label>Hora de Llegada</label>
+                    <input type="time" formControlName="hora_llegada" required>
+                    <label>Fecha de Salida</label>
+                    <input type="time" formControlName="hora_salida" required>
+                    <label>Cantidad de Huespedes</label>
+                    <input type="number" formControlName="huespedes" placeholder="Huespedes">
+                    <button role="button">
+                        Hacer Reservación
+                    </button>
+                </form>
+            </section>
+        </section>
+    </div>
+</body>

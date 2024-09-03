@@ -1,65 +1,61 @@
 <app-navbar></app-navbar>
+
 <div class="wrapper">
   <div class="container" *ngIf="bedroom">
     <h1>{{ bedroom.title }}</h1>
-    <!-- <div class="image-container">
-      <div class="img">
-        <div class="">
-          <img [src]="bedroom.image" alt="Imagen de la habitación">
-        </div>
-      </div>
-    </div> -->
     <div class="image-container">
       <img [src]="bedroom.image" [alt]="bedroom.title">
     </div>
     <div class="details">
+
       <div class="left-column">
-        <h4>Disfruta de un buen servicio con {{ bedroom.title }}, una habitación que te ayuda a descansar</h4>
+        <h4>Disfruta de un buen servicio con {{bedroom.title}}, una habitación que te ayuda a descansar</h4>
         <div class="feature">
           <i class="fas fa-medal"></i>
-          <span>{{ bedroom.description }}</span>
+          <span> {{bedroom.description}}</span>
         </div>
         <div class="feature">
           <i class="fas fa-user-friends"></i>
-          <span>Anfitrión: {{ bedroom.host }}, con años de experiencia en el servicio</span>
+          <span> Anfitrión: {{bedroom.host}} ,con años de experiencia en el servicio</span>
         </div>
         <div class="feature">
           <i class="fas fa-building"></i>
-          <span>Categoria de servicios "{{ bedroom.category }}"</span>
+          <span> Categoria de servicios "{{ bedroom.category }}"</span>
         </div>
         <div class="feature">
           <i class="fas fa-map"></i>
-          <span>Alojamiento ubicado en {{ bedroom.location }}</span>
+          <span> Alojamiento ubicado en {{ bedroom.location }}</span>
         </div>
         <br>
-        <h4>Descubre más del lugar</h4>
-        <span>{{ bedroom.fullDescription }}</span>
+        <h4>Descrube más del lugar</h4>
+        <span> {{ bedroom.fullDescription }}</span>
         <br>
         <h4>Lo que este lugar ofrece</h4>
         <div class="amenities">
-          <div class="amenity">
-            <i class="fas fa-star"></i> {{ bedroom.service }}
+          <div class="amenity" *ngFor="let service of bedroom.services">
+            <i class="fas fa-star"></i> {{ service }}
           </div>
         </div>
       </div>
       <div class="right-column">
         <div class="price">{{ bedroom.price | currency:'MXN':'symbol-narrow' }} <span>noche</span></div>
         <div class="price-details">
-          <p>Registra las noches que desas pasar en el {{ bedroom.title }}</p>
-          <p>Incluye los huéspedes necesarios</p>
-          <p>Puedes comenzar a reservar, haz clic aquí abajo.</p>
+          <p>Registra las noches que desas pasar en el {{ bedroom.title }}
+          <p>
+          <p>Incluye los huéspeds necesarios</p>
+          <p>
+            Puedes comenzar a reservar haz clic aqui abajo.
+          </p>
         </div>
-        <button [routerLink]="['/reservation']">Reservar</button>
+        <button [routerLink]="['/reservation', bedroom._id]">Reservar</button>
       </div>
     </div>
     <div class="reviews">
       <h3>Opiniones</h3>
       <div class="review" *ngFor="let review of bedroom.reviews">
-        <!-- Mostrar las opiniones aquí -->
       </div>
     </div>
   </div>
 </div>
 
-  <app-comentarios [idCasa]="bedroom._id"></app-comentarios>
-<app-footer></app-footer>
+<app-comentario></app-comentario>
