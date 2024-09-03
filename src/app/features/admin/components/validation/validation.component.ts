@@ -50,6 +50,8 @@ export class ValidationComponent {
         console.info('Información actualizada: ')
         console.info(success)
         this.getHabitaciones();
+        this.setDefaulCriteriosAceptacion();
+        document.getElementById('btnCancelarModal')?.click()
       }, (error) => console.error(error)
     )
   }
@@ -63,7 +65,7 @@ export class ValidationComponent {
         }
         return a && this.formCriterios.get(b)?.value
       } else {
-        return true;
+        return a;
       }
     }, true)
     if(this.habitacion) {
@@ -72,8 +74,6 @@ export class ValidationComponent {
       this.habitacion.comentarios = this.formCriterios.get('comentarios')?.value
       this.actualizarHabitacion(this.habitacion)
     }
-    this.setDefaulCriteriosAceptacion();
-    document.getElementById('btnCancelarModal')?.click()
   }
 
   getEstatus(estatus: boolean|undefined): string {
