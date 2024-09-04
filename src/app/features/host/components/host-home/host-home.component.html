@@ -1,0 +1,84 @@
+<!-- <app-navbar></app-navbar>
+<div class="container">
+    <h1 class="welcome-message">Maria, ¡te damos la bienvenida!</h1>
+    <div class="right-column">
+        <div class="reservations">
+        <h2>Tus reservaciones</h2>
+        <div class="reservation-buttons">
+            <button class="btn btn-success">Terminan pronto (0)</button>
+            <button class="btn btn-primary">En curso (0)</button>
+            <button [routerLink]="['/room-crud']" class="btn btn-primary">
+                Crear nueva instancia
+            </button>
+            <button [routerLink]="['/room-crud']"  class="btn btn-secondary">
+                Ver habitaciones
+            </button>
+        </div>
+        </div>
+    </div>
+   
+    <div class="left-column">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../../../assets/img/sliderHost4.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="../../../../assets/img/sliderHots3.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="../../../../assets/img/sliderHost2.webp" class="d-block w-100" alt="...">
+            </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+<app-footer></app-footer> -->
+
+
+<!-- HTML -->
+<app-navbar></app-navbar>
+<div class="container">
+  <h2 class="welcome-message">Maria, ¡te damos la bienvenida!</h2>
+  <div class="content-wrapper">
+    <div class="left-column">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../../../../assets/img/sliderHost4.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="../../../../assets/img/sliderHots3.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="../../../../assets/img/sliderHost2.webp" class="d-block w-100" alt="...">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="">
+        <h3>Tus reservaciones</h3>
+        <br>
+        <div class="reservation-buttons">
+          <button type="button" class="btn btn-outline-danger">Terminan pronto (0)</button>
+          <br>
+          <button type="button" class="btn btn-outline-info">En curso (0)</button>
+          <br>
+          <button type="button" [routerLink]="['/room-crud']" class="btn btn-outline-dark">
+            Crear nueva estancia
+          </button>
+          <br>
+          <button type="button" [routerLink]="['/room-list']" class="btn btn-outline-dark">
+            Ver habitaciones
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+

@@ -1,58 +1,70 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from 'express';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReservacionService } from '../../../../core/services/reservacion.service';
-import { ActivatedRoute } from '@angular/router';
-import { take} from 'rxjs';
+import { Reservacion } from '../../../../models/reservacion';
+import { BedroomService } from '../../../../core/services/bedroom.service';
+
+interface Bedroom {
+  _id: any | string;
+}
 
 @Component({
   selector: 'app-reservation-form',
   templateUrl: './reservation-form.component.html',
-  styleUrl: './reservation-form.component.css'
+  styleUrl: './reservation-form.component.css',
+  providers: [ReservacionService]
 })
-export class ReservationFormComponent {
-  reservacionForm: FormGroup;
-  id: string | null;
+export class ReservationFormComponent implements OnInit {
   titulo = 'Hacer Reservacion';
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private _reservacionService: ReservacionService,
-    private aRouter: ActivatedRoute
-  ) {
-    this.reservacionForm = this.fb.group({
-      fecha_ingreso: [''],
-      fecha_termino: [''],
-      hora_llegada: [''],
-      hora_salida: [''],
-      huespedes: [''],
-    });
-    this.id = this.aRouter.snapshot.paramMap.get('id');
-  }
+  reservacionForm: FormGroup;
+  bedroom: any = {};
+  bedrooms: Bedroom[] = [];
 
-  createReservacion() {
-    const formData = new FormData();
-    formData.append('fecha_ingreso', this.reservacionForm.get('fecha_ingreso')?.value)
-    formData.append('fecha_termino', this.reservacionForm.get('fecha_termino')?.value)
-    formData.append('hora_llegada', this.reservacionForm.get('hora_llegada')?.value)
-    formData.append('hora_salida', this.reservacionForm.get('hora_salida')?.value)
-    formData.append('huespedes', this.reservacionForm.get('huespedes')?.value)
-    if ('Edit Rutina' === this.titulo) {
-      if (this.id != null) {
-        this._reservacionService.deleteReservacion(this.id).subscribe(data => {
-          alert('Reservación eliminada con exito!');
-          this.reservacionForm.reset();
-        }, error => {
-          alert(error);
-        })
-      }
-    } else {
-      this._reservacionService.createReservacion(formData).subscribe(data => {
-        alert('Reservacion agregada con exito!');
-      }, error => {
-        this.reservacionForm.reset();
-        alert(error);
-      })
+  constructor(private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router, private _reservacionService: ReservacionService, private bedroomService: BedroomService) {
+    this.reservacionForm = this.fb.group({
+      fecha_ingreso: ['', Validators.required],
+      fecha_termino: ['', Validators.required],
+      hora_llegada: ['', Validators.required],
+      hora_salida: ['', Validators.required],
+      huespedes: ['', Validators.required],
+      idBedrooms: [this.route.snapshot.paramMap.get('id'), Validators.required]
+    });
+  }
+  agregarReservacion() {
+
+    const RESERVACION: Reservacion = {
+      fecha_ingreso: this.reservacionForm.get('fecha_ingreso')?.value,
+      fecha_termino: this.reservacionForm.get('fecha_termino')?.value,
+      hora_llegada: this.reservacionForm.get('hora_llegada')?.value,
+      hora_salida: this.reservacionForm.get('hora_salida')?.value,
+      huespedes: this.reservacionForm.get('huespedes')?.value,
+      idBedrooms: this.reservacionForm.get('idBedrooms')?.value
+    }
+    console.log(RESERVACION);
+    this._reservacionService.guaradrReservacion(RESERVACION).subscribe(data => {
+      alert('Reservacion agregada con exito!');
+      this.router.navigate(['/']);
+    }, error => {
+      console.log("Ocurrió un error :/");
+      this.reservacionForm.reset();
+    });
+
+  }
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.bedroomService.getBedroomDetails(id).subscribe(
+        data => {
+          this.bedroom = data;
+        },
+        error => {
+          console.error('Error fetching bedroom details:', error);
+        }
+      );
     }
   }
 }
+

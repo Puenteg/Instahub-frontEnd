@@ -16,7 +16,7 @@
     <div class="col-md-5">
       <div class="row" *ngFor="let estadistica of constEstrellas">
         <div class="col-md-5">
-          <b>{{estadistica}} Estrella</b> {{ getPorcentaje(estadisticas['estrella'+estadistica].porcentaje) }}%
+          <b>{{estadistica}} Estrella</b> {{ getFormat2Decimales(estadisticas['estrella'+estadistica].porcentaje) }}%
         </div>
         <div class="col-md-7">
           <div class="progress">
@@ -27,7 +27,7 @@
       <div class="row">
         <div class="mt-2" style="margin-left: 10px;">
           <b>{{ estadisticas.totalCalificaciones }}</b> calificaciones globales <br>
-          <b>{{ estadisticas.promedio }}</b> de 5 estrellas
+          <b>{{ getFormat2Decimales(estadisticas.promedio) }}</b> de 5 estrellas
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
         <label for="autor" class="form-label">Autor</label>
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">{{ formComentario.get('autor')?.value }}</span>
+            <span class="input-group-text" id="basic-addon1">{{ $nombreUsuario | async }}</span>
           </div>
         </div>
       </div>
@@ -65,6 +65,6 @@
 <!-- Comentarios existentes -->
 <div class="container">
   <div class="row row-justify-center">
-    <app-comentario class="col-md-4" *ngFor="let comentario of comentarios" [comentario]="comentario" (refresh)="getComentarios(id)"></app-comentario>
+    <app-comentario class="col-md-4 col-xl-4 col-lg-4 col-sm-4" *ngFor="let comentario of comentarios" [comentario]="comentario" (refresh)="getComentarios(id)"></app-comentario>
   </div>
 </div>
