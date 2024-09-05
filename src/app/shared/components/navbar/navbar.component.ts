@@ -10,7 +10,7 @@ import { Router, NavigationEnd } from '@angular/router';
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
   menuOpen: boolean = false;
-  
+
   isOnRegisterPage: boolean = false;
   isOnHostHomePage: boolean = false;
   userName: string = '';
@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isOnRegisterPage = this.router.url === '/registro';
-        this.isOnHostHomePage = this.router.url === '/host-home'; 
+        this.isOnHostHomePage = this.router.url === '/host-home';
       }
     });
   }
@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
   loadUserInfo(): void {
     this.userName = localStorage.getItem('nombre') || '';
     this.userRole = localStorage.getItem('rol') || '';
-    this.isHost = this.userRole === 'anfitrión'; 
+    this.isHost = this.userRole === 'anfitrión';
   }
 
   toggleMenu(): void {
@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit {
   }
   // Método para ir a host-home
   goToHostHome(): void {
-    this.router.navigate(['/host-home']); 
+    this.router.navigate(['/host-home']);
   }
 
   logout(): void {
@@ -64,5 +64,10 @@ export class NavbarComponent implements OnInit {
     this.menuOpen = false;
     this.router.navigate(['/login']);
   }
+
+  toLogin():void {
+    this.router.navigate(['/login']);
+  }
+
 }
 
