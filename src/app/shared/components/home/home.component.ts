@@ -37,23 +37,7 @@ export class HomeComponent implements OnInit {
     this.fetchBedrooms();
   }
 
-  // fetchBedrooms(): void {
-  //   this.loading = true;
-  //   this.error = null;
-  //   this.http.get<Bedroom[]>('http://localhost:9000/api/home/data')
-  //     .subscribe({
-  //       next: (data) => {
-  //         this.bedrooms = data;
-  //         this.filteredBedrooms = data;
-  //         this.categories = this.getUniqueCategories(data);
-  //         this.loading = false;
-  //       },
-  //       error: (error) => {
-  //         this.error = 'Error al cargar los datos. Por favor, intenta de nuevo más tarde.';
-  //         this.loading = false;
-  //       }
-  //     });
-  // }
+
   fetchBedrooms(): void {
     this.loading = true;
     this.error = null;
@@ -103,14 +87,6 @@ export class HomeComponent implements OnInit {
     this.applyFilters();
   }
 
-  // applyFilters(): void {
-  //   this.filteredBedrooms = this.bedrooms.filter(bedroom => {
-  //     const categoryMatch = this.selectedCategory === 'All' || bedroom.category === this.selectedCategory;
-  //     const locationMatch = !this.searchLocation || bedroom.location.toLowerCase().includes(this.searchLocation.toLowerCase());
-  //     const dateMatch = this.checkDateRange(bedroom.date);
-  //     return categoryMatch && locationMatch && dateMatch;
-  //   });
-  // }
   applyFilters(): void {
     this.filteredBedrooms = this.bedrooms.filter((bedroom) => {
       const categoryMatch =
@@ -125,24 +101,6 @@ export class HomeComponent implements OnInit {
       return categoryMatch && locationMatch && dateMatch;
     });
   }
-
-  // checkDateRange(bedroomDate: string): boolean {
-  //   if (!this.searchDateFrom && !this.searchDateTo) return true;
-    
-  //   const bedroomDateObj = new Date(bedroomDate);
-  //   const fromDate = this.searchDateFrom ? new Date(this.searchDateFrom) : null;
-  //   const toDate = this.searchDateTo ? new Date(this.searchDateTo) : null;
-
-  //   if (fromDate && toDate) {
-  //     return bedroomDateObj >= fromDate && bedroomDateObj <= toDate;
-  //   } else if (fromDate) {
-  //     return bedroomDateObj >= fromDate;
-  //   } else if (toDate) {
-  //     return bedroomDateObj <= toDate;
-  //   }
-
-  //   return true;
-  // }
 
   checkDateRange(bedroomDate: string): boolean {
     const bedroomDateObj = new Date(bedroomDate);
