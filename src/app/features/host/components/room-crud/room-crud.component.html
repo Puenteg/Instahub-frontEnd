@@ -1,96 +1,88 @@
- <app-navbar></app-navbar>
- <br>
+<app-navbar></app-navbar>
+<br>
 
- <h1 class="text-center">Bienvenido, ahora puedes agregar una nueva estancia para tus clientes.</h1>
- <br>
- <div class="wrapper container">
-   <div class="crud row">
-     <div class="left-column col-md-8">
-       <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
-         <!-- Title -->
-         <div class="form-group mb-3">
-           <label for="title" class="form-label">Titulo para tu estancia</label>
-           <input id="title" formControlName="title" type="text" class="form-control" />
-         </div>
- 
-         <!-- Description -->
-         <div class="form-group mb-3">
-           <label for="description" class="form-label">describe de una forma precisa</label>
-           <input id="description" formControlName="description" type="text" class="form-control" />
-         </div>
- 
-         <!-- Full Description -->
-         <div class="form-group mb-3">
-           <label for="fullDescription" class="form-label">Complementa tu descripción para el usuario</label>
-           <textarea id="fullDescription" formControlName="fullDescription" class="form-control"></textarea>
-         </div>
- 
-         <!-- Host -->
-         <div class="form-group mb-3">
-           <label for="host" class="form-label">Anfitrion</label>
-           <input id="host" formControlName="host" type="text" class="form-control" />
-         </div>
- 
-         <!-- Grouping Cost and Category -->
-         <div class="row mb-3">
-           <div class="col-md-6">
-             <div class="form-group">
-               <label for="price" class="form-label">Costo x Noche</label>
-               <input id="price" aria-label="$" formControlName="price" type="number" class="form-control" />
-             </div>
-           </div>
- 
-           <div class="col-md-6">
-             <div class="form-group">
-               <label for="category" class="form-label">Categoria (selecciona la mas conveniente)</label>
-               <select id="category" formControlName="category" class="form-select">
-                 <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-               </select>
-             </div>
-           </div>
-         </div>
- 
-         <!-- Service -->
-         <div class="form-group mb-3">
-           <label for="service" class="form-label">¿Qué servicios tiene?</label>
-           <select id="service" formControlName="service" class="form-select">
-             <option *ngFor="let service of services" [value]="service">{{ service }}</option>
-           </select>
-         </div>
- 
-         <!-- Location -->
-         <div class="form-group mb-3">
-           <label for="location" class="form-label">¿Donde se ubica?</label>
-           <input id="location" formControlName="location" type="text" class="form-control" />
-         </div>
- 
-         <!-- Image URL -->
-         <div class="form-group mb-3">
-           <label for="image" class="form-label">Agrega una imagen para referenciar (url)</label>
-           <input id="image" formControlName="image" type="text" class="form-control" />
-         </div>
- 
-         <!-- Success and Error Messages -->
-         <div *ngIf="successMessage" class="alert alert-success">
-           {{ successMessage }}
-         </div>
- 
-         <div *ngIf="errorMessage" class="alert alert-danger">
-           {{ errorMessage }}
-         </div>
-       </form>
-     </div>
- 
-     <!-- Right Column with Buttons -->
-     <div class="right-column col-md-4 d-flex flex-column align-items-end">
-       <button type="submit" [disabled]="roomForm.invalid" (click)="onSubmit()" class="btn btn-primary mb-2">
-         Enviar
-       </button>
-       <button type="button" [routerLink]="['/host-home']" class="btn btn-outline-dark">
-         Regresar
-       </button>
-     </div>
-   </div>
- </div>
- <app-footer></app-footer>
- 
+<h1 class="text-center">Bienvenido, ahora puedes agregar una nueva estancia para tus clientes.</h1>
+<br>
+<div class="wrapper container">
+  <div class="crud row">
+    <div class="left-column col-md-8">
+      <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+        <!-- Success and Error Messages -->
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        <!-- Title -->
+        <div class="form-group mb-3">
+          <label for="title" class="form-label">Título de instancia</label>
+          <input id="title" formControlName="title" type="text" class="form-control" />
+        </div>
+
+        <!-- Description -->
+        <div class="form-group mb-3">
+          <label for="description" class="form-label">Describe de una forma precisa tu habitación</label>
+          <input id="description" formControlName="description" type="text" class="form-control" />
+        </div>
+
+        <!-- Full Description -->
+        <div class="form-group mb-3">
+          <label for="fullDescription" class="form-label">Complementa tu descripción para el usuario</label>
+          <textarea id="fullDescription" formControlName="fullDescription" class="form-control"></textarea>
+        </div>
+
+        <!-- Grouping Cost and Category -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="price" class="form-label">Costo por Noche</label>
+              <input id="price" aria-label="$" formControlName="price" type="number" class="form-control" />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="category" class="form-label">Categoria (selecciona la mas conveniente)</label>
+              <select id="category" formControlName="category" class="form-select">
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service -->
+        <div class="form-group mb-3">
+          <label for="service" class="form-label">¿Qué servicios tiene?</label>
+          <select id="service" formControlName="service" class="form-select">
+            <option *ngFor="let service of services" [value]="service">{{ service }}</option>
+          </select>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group mb-3">
+          <label for="location" class="form-label">¿Dónde se ubica?</label>
+          <input id="location" formControlName="location" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="image" class="form-label">Agrega una imagen de referencia </label>
+          <input id="image" type="file" accept="img" class="form-control" (change)="onLoader($event)" />
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Right Column with Buttons -->
+    <div class="right-column col-md-4 d-flex flex-column align-items-end">
+      <button type="submit" [disabled]="roomForm.invalid" (click)="onSubmit()" class="btn btn-primary mb-2">
+        Enviar
+      </button>
+      <button type="button" [routerLink]="['/host-home']" class="btn btn-outline-dark">
+        Regresar
+      </button>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

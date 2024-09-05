@@ -67,7 +67,8 @@ import { RoomListComponent } from './features/host/components/room-list/room-lis
   ],
   providers: [
     provideClientHydration(),
-    DatePipe
+    DatePipe,
+    
   ],
   bootstrap: [AppComponent]
 })

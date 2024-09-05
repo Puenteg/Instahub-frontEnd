@@ -1,51 +1,34 @@
-// src/app/room-list/room-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { RoomService } from '../../../../core/services/room.service';
-import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../enviroments/environment';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.css']
 })
-
 export class RoomListComponent implements OnInit {
   rooms: any[] = [];
-  hostId: string = ''; // Inicializa con una cadena vacía
+  errorMessage: string = '';
 
-  constructor(private roomService: RoomService, private route: ActivatedRoute) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService 
+  ) {}
 
   ngOnInit(): void {
-    // Verifica que `hostId` no sea `null` y proporciona un valor predeterminado
-    this.hostId = this.route.snapshot.paramMap.get('hostId') || '';
-    this.loadRooms();
-  }
+    const hostId = this.authService.getValueId(); // Obtén el ID del anfitrión
 
-  loadRooms(): void {
-    if (this.hostId) { // Verifica que `hostId` tenga un valor válido
-      this.roomService.getAllBedroomsByHost(this.hostId).subscribe(
-        data => {
-          this.rooms = data;
+    this.http.get(`${environment.apiBaseUrl}/bedrooms?host=${hostId}`)
+      .subscribe(
+        (data: any) => {
+          this.rooms = data;  
         },
         error => {
-          console.error('Error fetching rooms', error);
+          this.errorMessage = 'Error al cargar las habitaciones. Inténtalo de nuevo.';
+          console.error('Error al obtener las habitaciones:', error);
         }
       );
-    } else {
-      console.error('Host ID is not available');
-    }
-  }
-
-  // Método para eliminar habitaciones
-  deleteRoom(roomId: string): void {
-    this.roomService.deleteBedroom(roomId).subscribe(
-      () => {
-        this.loadRooms(); // Recarga la lista de habitaciones después de eliminar
-      },
-      error => {
-        console.error('Error deleting room', error);
-      }
-    );
   }
 }
-

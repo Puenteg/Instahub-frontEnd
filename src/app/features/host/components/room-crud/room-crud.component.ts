@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+//DEJAR AUTOMATICO EL ANFITRION
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../enviroments/environment';
+import { AuthService } from '../../../../core/services/auth.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-room-crud',
@@ -14,30 +16,49 @@ export class RoomCrudComponent implements OnInit {
     'Completo: Baño, Cocina, Estufa, WIFI, TV, Estacionamiento, Cosas de baño, Cafetera, Tratos de cocina y Microondas',
     'Servicio basico: Baño, Cosas de baño, Wifi, Cocina (estufa y gas) y microondas.',
     'Servicio indispensable: Baño, WIFI, Cosas de baño, Toallas y microondas.'
-  ]; // Lista de servicios
+  ]; 
   categories: string[] = [
     'Albercas increíbles', 'Populares', 'Extraordinarias', 'Frente a la playa', 'Casas de campo', 'Icónicos', 'Habitaciones',
     'Cabañas', 'Vista increíble', 'Mansiones'
-  ]; // Lista de categorías
-  successMessage: string = ''; // Mensaje de éxito
-  errorMessage: string = ''; // Mensaje de error
+  ]; 
+  successMessage: string = ''; 
+  errorMessage: string = ''; 
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private authService: AuthService 
+  ) {
     this.roomForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       fullDescription: [''],
-      host: ['', Validators.required],
+      host: ['', Validators.required], 
       price: [0, Validators.required],
-      service: ['', Validators.required], // Solo se permite un servicio
+      service: ['', Validators.required], 
       category: ['', Validators.required],
       location: ['', Validators.required],
-      image: [''] // URL de la imagen
+      image: [''] 
     });
   }
-
+  //registra el usuario con nombre 
+    // ngOnInit(): void {
+    //   // Obtener el nombre del usuario autenticado y establecerlo en el formulario
+    //   const userName = this.authService.getUserName();
+    //   if (userName) {
+    //     this.roomForm.get('host')?.setValue(userName);  // Establecer el nombre del anfitrión
+    //   } else {
+    //     this.errorMessage = 'Error al obtener el nombre del anfitrión. Por favor, intenta de nuevo.';
+    //   }
+    // }
   ngOnInit(): void {
-    // Elimina las llamadas a getCategories y getServices ya que las listas están definidas localmente
+      // Obtener el nombre del usuario autenticado y establecerlo en el formulario
+      const idHost = this.authService.getValueId();
+      if (idHost) {
+        this.roomForm.get('host')?.setValue(idHost);  // Establecer el nombre del anfitrión
+      } else {
+        this.errorMessage = 'Error al obtener el nombre del anfitrión. Por favor, intenta de nuevo.';
+      }
   }
 
   onSubmit(): void {
@@ -45,14 +66,33 @@ export class RoomCrudComponent implements OnInit {
       this.http.post(`${environment.apiBaseUrl}/bedrooms`, this.roomForm.value)
         .subscribe(response => {
           this.successMessage = '¡Habitación creada con éxito!';
-          this.errorMessage = ''; // Limpiar el mensaje de error si la solicitud es exitosa
-          this.roomForm.reset(); // Limpiar los campos del formulario
-          console.log('Bedroom created:', response);
+          this.errorMessage = ''; 
+          this.roomForm.reset();
+          console.log('Habitación creada:', response);
         }, error => {
-          this.errorMessage = 'Error al crear la habitación. Inténtalo de nuevo más tarde.';
-          this.successMessage = ''; // Limpiar el mensaje de éxito si hay un error
-          console.error('Error creating bedroom:', error);
+          this.errorMessage = 'Error al crear la habitación. Inténtalo de nuevo.';
+          this.successMessage = ''; 
+          console.error('Error creando la habitación:', error);
         });
     }
   }
+
+  onLoader(event: any): void {
+    const file = event.srcElement.files[0];
+    console.log(file);
+    let reader = new FileReader();
+    reader.onload = () => {
+        const base64String: string = `${reader.result}`
+              .replace('data:', '')
+              .replace(/^.+,/, '');
+        this.roomForm.get('image')?.patchValue(`${reader.result}`);
+    };
+    reader.onerror = function() {
+        console.log('there are some problems');
+    };
+
+    // reader.readAsArrayBuffer(file);
+    reader.readAsDataURL(file);
+}
+
 }

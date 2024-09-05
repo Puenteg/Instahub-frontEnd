@@ -10,9 +10,12 @@ import { Router, NavigationEnd } from '@angular/router';
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
   menuOpen: boolean = false;
+  
   isOnRegisterPage: boolean = false;
+  isOnHostHomePage: boolean = false;
   userName: string = '';
   userRole: string = '';
+  isHost: boolean = false; // Nueva propiedad
 
   constructor(
     private authService: AuthService,
@@ -21,6 +24,7 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isOnRegisterPage = this.router.url === '/registro';
+        this.isOnHostHomePage = this.router.url === '/host-home'; 
       }
     });
   }
@@ -39,6 +43,7 @@ export class NavbarComponent implements OnInit {
   loadUserInfo(): void {
     this.userName = localStorage.getItem('nombre') || '';
     this.userRole = localStorage.getItem('rol') || '';
+    this.isHost = this.userRole === 'anfitrión'; 
   }
 
   toggleMenu(): void {
@@ -48,6 +53,10 @@ export class NavbarComponent implements OnInit {
   goToRegister(): void {
     this.router.navigate(['/registro']);
   }
+  // Método para ir a host-home
+  goToHostHome(): void {
+    this.router.navigate(['/host-home']); 
+  }
 
   logout(): void {
     this.authService.logout();
@@ -56,3 +65,4 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 }
+

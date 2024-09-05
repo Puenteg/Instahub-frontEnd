@@ -19,14 +19,13 @@ const routes: Routes = [
   { path: 'registro', component:  RegistroComponent },
   { path: 'token', component:  ValidateTokenComponent },
   { path: 'admin', component:  RoleManagementComponent },
-  // { path: 'room-details/:id', component: RoomDetailsComponent },
   { path: 'room-details/:id', component: RoomDetailsComponent },
   { path: 'reservation/:id', component: ReservationFormComponent },
   { path: 'dashboard', component: RaitingDashboardComponent },
   { path: 'host-home', component: HostHomeComponent },
   { path: 'room-crud', component: RoomCrudComponent },
   { path: 'room-list', component: RoomListComponent },
-  { path: 'room-list/:hostId', component: RoomListComponent },
+  // { path: 'room-list/:hostId', component: RoomListComponent },
 
 
 ];

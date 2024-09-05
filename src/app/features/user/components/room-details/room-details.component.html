@@ -16,7 +16,7 @@
         </div>
         <div class="feature">
           <i class="fas fa-user-friends"></i>
-          <span> Anfitrión: {{bedroom.host}} ,con años de experiencia en el servicio</span>
+          <span> Anfitrión: {{bedroom.host}}, con años de experiencia en el servicio</span>
         </div>
         <div class="feature">
           <i class="fas fa-building"></i>
@@ -38,11 +38,11 @@
         </div>
       </div>
       <div class="right-column">
-        <div class="price">{{ bedroom.price | currency:'MXN':'symbol-narrow' }} <span>noche</span></div>
+        <div class="price">{{ bedroom.price | currency:'MXN':'symbol-narrow' }} MXN <span>noche</span></div>
         <div class="price-details">
           <p>Registra las noches que desas pasar en el {{ bedroom.title }}
           <p>
-          <p>Incluye los huéspeds necesarios</p>
+          <p>Incluye los huéspedes necesarios</p>
           <p>
             Puedes comenzar a reservar haz clic aqui abajo.
           </p>
@@ -50,12 +50,8 @@
         <button [routerLink]="['/reservation', bedroom._id]">Reservar</button>
       </div>
     </div>
-    <div class="reviews">
-      <h3>Opiniones</h3>
-      <div class="review" *ngFor="let review of bedroom.reviews">
-      </div>
-    </div>
   </div>
 </div>
 
-<app-comentario></app-comentario>
+<app-comentarios [idCasa]="bedroom._id"></app-comentarios>
+<app-footer></app-footer>

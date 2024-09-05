@@ -1,34 +1,30 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <div class="header">
-    <h1>Habitaciones del Anfitrión</h1>
-    <!-- Imagen del anfitrión -->
-    <!-- <div *ngIf="hostImageUrl" class="host-info">
-      <h2>Imagen del Anfitrión</h2>
-      <img [src]="hostImageUrl" alt="Imagen del Anfitrión" class="host-image" />
-    </div> -->
+<div class="container mt-4">
+  <h1 class="text-center">Mis Habitaciones Registradas</h1>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
   </div>
 
-  <!-- Lista de habitaciones -->
-  <div class="room-list">
-    <div *ngIf="rooms.length === 0" class="no-rooms">
-      <p>No hay habitaciones disponibles.</p>
-    </div>
-
-    <div *ngFor="let room of rooms" class="room-card">
-      <!-- <img [src]="room.image || 'assets/default-room-image.jpg'" alt="Imagen de la Habitación" class="room-image" /> -->
-      <!-- <img [src]="rooms[0]?.hostImageUrl" alt="Imagen del Anfitrión" class="host-image" /> -->
-      <div class="room-details">
-        <h3>{{ room.title }}</h3>
-        <p><strong>Descripción:</strong> {{ room.description }}</p>
-        <p><strong>Descripción Completa:</strong> {{ room.fullDescription }}</p>
-        <p><strong>Precio:</strong> ${{ room.price }}</p>
-        <p><strong>Servicio:</strong> {{ room.service }}</p>
-        <p><strong>Categoría:</strong> {{ room.category }}</p>
-        <p><strong>Ubicación:</strong> {{ room.location }}</p>
-        <button (click)="deleteRoom(room._id)" class="delete-button">Eliminar</button>
+  <div *ngIf="rooms.length > 0; else noRooms">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let room of rooms">
+        <div class="card mb-3">
+          <img src="{{ room.image }}" class="card-img-top" alt="{{ room.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ room.title }}</h5>
+            <p class="card-text">{{ room.description }}</p>
+            <p class="card-text"><small class="text-muted">{{ room.location }}</small></p>
+            <p class="card-text"><strong>{{ room.price | currency }}</strong> por noche</p>
+            <a [routerLink]="['/room-details', room._id]" class="btn btn-primary">Ver detalles</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <ng-template #noRooms>
+    <p class="text-center">No tienes habitaciones registradas.</p>
+  </ng-template>
 </div>
 <app-footer></app-footer>

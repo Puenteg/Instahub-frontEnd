@@ -7,6 +7,13 @@
   <nav>
   </nav>
   <div class="user-menu">
+    <div>
+      <button *ngIf="isLoggedIn && userRole && !isOnHostHomePage" class="host-home-button" (click)="goToHostHome()">Ver como Host</button>
+    </div>
+    <!-- <div>
+      <button *ngIf="isLoggedIn && userRoleA && !isOnAdminHomePage" class="admin-home-button" (click)="goToAdminHome()">Ver como Administrador</button>
+    </div>   -->
+    
     <button *ngIf="!isLoggedIn && !isOnRegisterPage" class="host-button" (click)="goToRegister()">Convierte tu casa en InstaHub</button>
     <div class="user-menu-container" *ngIf="isLoggedIn">
       <button class="user-button" (click)="toggleMenu()">
