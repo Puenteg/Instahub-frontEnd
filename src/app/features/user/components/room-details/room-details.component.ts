@@ -29,7 +29,7 @@ export class RoomDetailsComponent implements OnInit {
 
   fetchBedrooms(): void {
     this.error = null;
-    this.http.get<Bedroom[]>('http://localhost:9000/api/home/data')
+    this.http.get<Bedroom[]>('http://54.211.225.90:9000/api/home/data')
       .subscribe({
         next: (data) => {
           this.bedrooms = data;

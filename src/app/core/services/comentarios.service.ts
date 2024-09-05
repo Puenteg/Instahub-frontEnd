@@ -34,7 +34,7 @@ const COMENTARIOS_DATA: Comentario[] = [
 })
 export class ComentariosService {
 
-  private _urlComentarios = 'http://localhost:9000/api/comentarios';
+  private _urlComentarios = 'http://54.211.225.90:9000/api/comentarios';
 
   constructor(private httpClient: HttpClient) { }
 

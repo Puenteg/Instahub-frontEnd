@@ -34,7 +34,7 @@ export interface Criterio {
 })
 export class ValidationService {
 
-  private readonly _urlService = 'http://localhost:9000/api/estatusHabitacion';
+  private readonly _urlService = 'http://54.211.225.90:9000/api/estatusHabitacion';
 
   constructor(private httpClient: HttpClient) { }
 

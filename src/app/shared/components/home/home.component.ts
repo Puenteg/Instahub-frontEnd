@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   fetchBedrooms(): void {
     this.loading = true;
     this.error = null;
-    this.http.get<Bedroom[]>('http://localhost:9000/api/home/data').subscribe({
+    this.http.get<Bedroom[]>('http://54.211.225.90:9000/api/home/data').subscribe({
       next: (data) => {
         this.bedrooms = data.map(m => {
           if(m._id === '66d7fb99d603044e1d11bcd5') {
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   }
 
   fetchImages(id: string): void {
-    this.http.get<Bedroom>('http://localhost:9000/api/home/data/' + id).pipe(take(1)).subscribe({
+    this.http.get<Bedroom>('http://54.211.225.90:9000/api/home/data/' + id).pipe(take(1)).subscribe({
       next: (data) => {
         const bedRoom = this.bedrooms.find(f => f._id = id);
         if(bedRoom) {

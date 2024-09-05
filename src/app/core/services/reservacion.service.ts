@@ -6,7 +6,7 @@ import { Reservacion } from '../../models/reservacion';
   providedIn: 'root'
 })
 export class ReservacionService {
-  url = 'http://localhost:9000/api/reservacion/';
+  url = 'http://54.211.225.90:9000/api/reservacion/';
 
   constructor(private http: HttpClient, private httpClient: HttpClient) { }
 

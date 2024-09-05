@@ -7,7 +7,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class RoleManagementService {
 
-  private _urlRoleManagement = 'http://localhost:9000/api/role';
+  private _urlRoleManagement = 'http://54.211.225.90:9000/api/role';
 
   constructor(private httpClient: HttpClient) { }
 

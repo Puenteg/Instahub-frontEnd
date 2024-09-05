@@ -8,7 +8,7 @@
 //   providedIn: 'root',
 // })
 // export class AuthService {
-//   private apiUrl = 'http://localhost:9000/api/auth';
+//   private apiUrl = 'http://54.211.225.90:9000/api/auth';
 
 //   $nombreUsuario = new BehaviorSubject('');
 //   $idUsuario = new BehaviorSubject('');
@@ -120,7 +120,7 @@
 //   providedIn: 'root',
 // })
 // export class AuthService {
-//   private apiUrl = 'http://localhost:9000/api/auth';
+//   private apiUrl = 'http://54.211.225.90:9000/api/auth';
 
 //   $nombreUsuario = new BehaviorSubject('');
 //   $idUsuario = new BehaviorSubject('');
@@ -245,7 +245,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:9000/api/auth';
+  private apiUrl = 'http://54.211.225.90:9000/api/auth';
 
   $nombreUsuario = new BehaviorSubject('');
   $idUsuario = new BehaviorSubject('');

@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class BedroomService {
-  private apiUrl = 'http://localhost:9000/api';
+  private apiUrl = 'http://54.211.225.90:9000/api';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
